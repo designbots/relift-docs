@@ -1,0 +1,51 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/22uvluxcz_t1m.js"
+5:"/_next/static/chunks/3vxcaxl9rybwn.js"
+6:"/_next/static/chunks/039b2uykstso8.js"
+7:"/_next/static/chunks/19b479a35pu1k.js"
+8:I[39756,["$4","$5","$6","$7"],"default"]
+9:I[37457,["$4","$5","$6","$7"],"default"]
+e:"/_next/static/chunks/3tbf6z5wvgdy1.js"
+f:"/_next/static/chunks/0tz6p6l5mlps2.js"
+10:"/_next/static/chunks/1_asspl8xs7c0.js"
+11:"/_next/static/chunks/17t58aah9n9ks.js"
+12:"/_next/static/chunks/3l__e9cre1ujh.js"
+13:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsPage"]
+14:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsTitle"]
+15:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsDescription"]
+16:"MarkdownCopyButton"
+17:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"$16"]
+18:"ViewOptionsPopover"
+19:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"$18"]
+1a:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsBody"]
+1b:I[94157,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"Heading"]
+24:"ViewportBoundary"
+25:I[97367,["$4","$5","$6","$7"],"$24"]
+26:"MetadataBoundary"
+27:I[97367,["$4","$5","$6","$7"],"$26"]
+28:"$Sreact.suspense"
+29:I[27201,["$4","$5","$6","$7"],"IconMark"]
+b:X
+b:C
+c:X
+d:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$3","c",{"children":[["$","$L13",null,{"toc":[{"depth":2,"url":"#déplacer-la-configuration","title":"Déplacer la configuration"},{"depth":3,"url":"#exporter","title":"Exporter"},{"depth":3,"url":"#importer","title":"Importer"},{"depth":3,"url":"#vérifier","title":"Vérifier"},{"depth":2,"url":"#déplacer-le-moteur","title":"Déplacer le moteur"},{"depth":2,"url":"#exporter-vos-données","title":"Exporter vos données"},{"depth":2,"url":"#quitter-relift","title":"Quitter Relift"}],"children":[["$","$L14",null,{"children":"Migration et export"}],["$","$L15",null,{"className":"mb-0","children":"Déplacer la configuration d’un site à l’autre, exporter les données personnelles et sortir vos données."}],["$","div",null,{"className":"flex flex-row gap-2 items-center border-b pb-6","children":[["$","$L17",null,{"markdownUrl":"/llms.mdx/docs/migration/migration-et-export.md"}],["$","$L19",null,{"markdownUrl":"/llms.mdx/docs/migration/migration-et-export.md","githubUrl":"https://github.com/designbots/relift-docs/blob/main/content/docs/migration/migration-et-export.mdx"}]]}],["$","$L1a",null,{"children":[["$","$L1b",null,{"as":"h2","id":"déplacer-la-configuration","children":"Déplacer la configuration"}],"\n",["$","p",null,{"children":"La configuration Relift se copie d’un site à l’autre sans toucher au code."}],"\n",["$","div",null,{"className":"fd-steps","children":[["$","div",null,{"className":"fd-step","children":[["$","$L1b",null,{"as":"h3","id":"exporter","children":"Exporter"}],["$","p",null,{"children":["Sur le site source : ",["$","strong",null,{"children":"WooCommerce → Réglages → Relift B2B → Import et export"}],", bouton d’export. Vous obtenez un fichier JSON."]}]]}],["$","div",null,{"className":"fd-step","children":[["$","$L1b",null,{"as":"h3","id":"importer","children":"Importer"}],["$","p",null,{"children":["Sur le site cible, collez le contenu dans ",["$","strong",null,{"children":"Importer des réglages"}]," puis enregistrez."]}]]}],["$","div",null,{"className":"fd-step","children":[["$","$L1b",null,{"as":"h3","id":"vérifier","children":"Vérifier"}],["$","p",null,{"children":["Lancez ",["$","code",null,{"children":"wp relift config"}]," pour afficher la configuration active, puis ",["$","code",null,{"children":"wp relift doctor"}],"."]}]]}]]}],"\n",["$","p",null,{"children":["Les réglages imposés par ",["$","code",null,{"children":"client.json"}]," (liste ",["$","code",null,{"children":"locked"}],") ne sont jamais remplacés. Les réglages actuels de l’administration du site cible sont remplacés par ceux du fichier : exportez-les d’abord pour en garder une copie."]}],"\n",["$","$L1b",null,{"as":"h2","id":"déplacer-le-moteur","children":"Déplacer le moteur"}],"\n",["$","p",null,{"children":"Un site Relift se compose de trois éléments :"}],"\n",["$","div",null,{"className":"relative overflow-auto prose-no-margin my-6","tabIndex":0,"children":["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Élément"}],["$","th",null,{"children":"Où"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Code"}],["$","td",null,{"children":["Dossier ",["$","code",null,{"children":"mu-plugins/"}],", identique sur tous les sites"]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Configuration"}],["$","td",null,{"children":[["$","code",null,{"children":"client.json"}]," dans ",["$","code",null,{"children":"wp-content/relift/"}]]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Données"}],["$","td",null,{"children":"Produits, comptes, commandes et demandes dans la base WordPress"}]]}]]}]]}]}],"\n",["$","p",null,{"children":["Copiez le dossier et le fichier de configuration, puis déplacez la base et les médias avec votre outil de migration WordPress habituel. Terminez par ",["$","code",null,{"children":"wp relift init"}]," si le site est neuf, puis ",["$","code",null,{"children":"wp relift doctor"}],"."]}],"\n",["$","$L1b",null,{"as":"h2","id":"exporter-vos-données","children":"Exporter vos données"}],"\n",["$","div",null,{"className":"relative overflow-auto prose-no-margin my-6","tabIndex":0,"children":["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Donnée"}],["$","th",null,{"children":"Comment"}]]}]}],"$L1c"]}]}],"\n","$L1d","\n","$L1e","\n","$L1f"]}]]}],["$L20","$L21"],"$L22"]}],"p":"$@23","v":null,"s":"$c"}}]]
+2:[["children",{"s":{"n":"slug","t":"oc","k":"migration/migration-et-export","s":[]},"h":64,"d":{"r":["$","$3","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}]}]]}],"p":"$@a","v":"$b","s":"$c"},"c":"$Qd"}]]
+1:[["children",{"s":"docs","h":32,"c":"$Q2"}]]
+0:{"t":{"t":{"s":"","h":80,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L25",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L27",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$28",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Migration et export · Documentation Relift"}],["$","meta","1",{"name":"description","content":"Déplacer la configuration d’un site à l’autre, exporter les données personnelles et sortir vos données."}],["$","meta","2",{"property":"og:title","content":"Migration et export · Documentation Relift"}],["$","meta","3",{"property":"og:description","content":"Déplacer la configuration d’un site à l’autre, exporter les données personnelles et sortir vos données."}],["$","meta","4",{"name":"twitter:card","content":"summary"}],["$","meta","5",{"name":"twitter:title","content":"Migration et export · Documentation Relift"}],["$","meta","6",{"name":"twitter:description","content":"Déplacer la configuration d’un site à l’autre, exporter les données personnelles et sortir vos données."}],["$","link","7",{"rel":"icon","href":"/icon.svg?icon.3rduyps02r6fd.svg","sizes":"any","type":"image/svg+xml"}],["$","$L29","8",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2a","v":null,"s":"$c"}},"a":"$@2b","u":"$@2c","b":"SFg9EM-H2JMjrvKtO-0If"}
+2d:I[47873,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"default"]
+2e:I[97367,["$4","$5","$6","$7"],"OutletBoundary"]
+1c:["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Commandes, produits, clients"}],["$","td",null,{"children":"Exports natifs de WooCommerce et de WordPress"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Données d’une personne (comptes pros, demandes de devis, journal d’activité)"}],["$","td",null,{"children":["$","strong",null,{"children":"Outils → Exporter les données personnelles"}]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Configuration"}],["$","td",null,{"children":"Export JSON ci-dessus"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Webhook"}],["$","td",null,{"children":["Chaque demande de devis et chaque compte pro peuvent être envoyés à vos outils. Voir ",["$","$L2d",null,{"href":"/docs/integrations/webhook","children":"le webhook"}]]}]]}]]}]
+1d:["$","p",null,{"children":["Les exports de données personnelles et les imports de prix sont inscrits au ",["$","$L2d",null,{"href":"/docs/securite/journal-activite","children":"journal d’activité"}],"."]}]
+1e:["$","$L1b",null,{"as":"h2","id":"quitter-relift","children":"Quitter Relift"}]
+1f:["$","p",null,{"children":"Les données restent dans WordPress et WooCommerce : produits, commandes et comptes sont des contenus standard. Les champs de la fiche catalogue sont des champs ACF, lisibles par n’importe quel outil d’export."}]
+20:["$","script","script-0",{"src":"/_next/static/chunks/17t58aah9n9ks.js","async":true}]
+21:["$","script","script-1",{"src":"/_next/static/chunks/3l__e9cre1ujh.js","async":true}]
+22:["$","$L2e",null,{"children":["$","$28",null,{"name":"Next.MetadataOutlet","children":"$@2f"}]}]
+2c:true
+c:300
+2f:null
+c:C
+2b:0
+a:"$undefined"
+2a:"$undefined"
+23:"$undefined"

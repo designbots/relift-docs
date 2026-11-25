@@ -4,7 +4,7 @@
 
 ```json
 {
-  "client": { "name": "Exemple Menuiseries", "brand_color": "#363644" },
+  "client": { "name": "Exemple Menuiseries" },
   "univers": "atelier",
   "b2b": { "prices": "pros", "signup": true, "signup_approval": "manual" },
   "locked": ["b2b.prices"]
@@ -15,7 +15,7 @@
 
 | Clé | Rôle |
 |---|---|
-| `client.name`, `client.logo`, `client.brand_color` | Nom du site, logo de la page de connexion, couleur d’accent |
+| `client.name`, `client.logo` | Nom du site, logo de la page de connexion |
 | `univers` | Filière : décide des caractéristiques de la fiche |
 | `b2b.*` | Comptes pros, prix, groupes, règles de commande, devis |
 | `security.*` | Double authentification, alertes, clés d’accès, journal |

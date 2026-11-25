@@ -8,7 +8,6 @@ Les clés s’écrivent en JSON imbriqué dans `client.json`, ou en notation poi
 |---|---|---|
 | `client.name` | Titre du site | Nom affiché |
 | `client.logo` | vide | Logo de la page de connexion |
-| `client.brand_color` | `#363644` | Couleur d’accent |
 | `univers` | `atelier` | `lagon`, `solaire`, `canopee`, `atelier`, `mineral` ou `confort` |
 
 ## Comptes, prix, commandes (`b2b`) [#comptes-prix-commandes-b2b]

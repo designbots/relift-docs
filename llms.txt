@@ -10,6 +10,7 @@
   - [La fiche produit](/llms.mdx/docs/catalogue/fiche-produit.md): Où saisir chaque information d’un produit : onglets WooCommerce et fiche catalogue Relift.
   - [Filtres du catalogue](/llms.mdx/docs/catalogue/filtres.md): La recherche paramétrique : par catégorie, gamme, attributs et caractéristiques.
   - [Catégories et gammes](/llms.mdx/docs/catalogue/gammes-categories.md): Organiser le catalogue : catégories WooCommerce et gammes transversales.
+  - [Importer un catalogue](/llms.mdx/docs/catalogue/importer-un-catalogue.md): Charger des produits, des prix et des documents en masse : préparer le fichier, les champs Relift à renseigner, contrôler le résultat.
   - [Pages locales](/llms.mdx/docs/catalogue/pages-locales.md): Une page par ville et par catégorie, avec son texte, ses questions fréquentes et ses données structurées.
   - [Les univers](/llms.mdx/docs/catalogue/univers.md): Les caractéristiques techniques proposées selon la filière du site.
 - Clients pros
@@ -29,10 +30,20 @@
   - [Bricks : balises et boucles](/llms.mdx/docs/integrations/bricks.md): Afficher prix, champs et listes dans Bricks Builder, sans shortcode.
   - [Webhook signé](/llms.mdx/docs/integrations/webhook.md): Notifier Make, Boost.space, n8n ou un CRM à chaque demande de devis ou compte pro.
   - [Commandes WP-CLI](/llms.mdx/docs/integrations/wp-cli.md): Diagnostic, initialisation, complétude, import de prix, journal et double authentification en ligne de commande.
+- Visibilité SEO et AEO
+  - [Données structurées](/llms.mdx/docs/seo-aeo/donnees-structurees.md): Ce que Relift ajoute au JSON-LD des produits et des pages locales pour les moteurs de recherche et de réponse.
+  - [Indexation et bonnes pratiques](/llms.mdx/docs/seo-aeo/indexation.md): Ce que Relift indexe, ce qu’il écarte, et comment préparer des fiches lisibles par les moteurs.
+- Suivi de l’activité
+  - [Tableau de bord et suivi](/llms.mdx/docs/suivi/tableau-de-bord.md): Suivre les demandes, les comptes à valider, la synchronisation et l’activité du site.
 - Sécurité et données
   - [Connexion sécurisée](/llms.mdx/docs/securite/connexion.md): Double authentification, clés d’accès, alertes de nouvel appareil et limitation des tentatives.
   - [Journal d’activité](/llms.mdx/docs/securite/journal-activite.md): Qui s’est connecté, qui a changé quoi, et comment le consulter.
   - [Données personnelles (RGPD)](/llms.mdx/docs/securite/rgpd.md): Export, effacement et durées de conservation des données collectées par Relift.
+- Migration et export
+  - [Migration et export](/llms.mdx/docs/migration/migration-et-export.md): Déplacer la configuration d’un site à l’autre, exporter les données personnelles et sortir vos données.
+- Design et branding
+  - [Identité et marque](/llms.mdx/docs/design-branding/identite-et-marque.md): Nom, logo, écran de connexion et assistance : ce qui s’affiche aux couleurs de votre société.
+  - [Thème et site public](/llms.mdx/docs/design-branding/theme-bricks.md): Concevoir les pages publiques avec le thème enfant Bricks Relift : composants, modèles, balises dynamiques.
 - Référence
   - [Clés de configuration](/llms.mdx/docs/reference/configuration.md): Toutes les clés de client.json avec leur valeur par défaut et leur effet.
   - [Diagnostic du site](/llms.mdx/docs/reference/diagnostic.md): Les contrôles de wp relift doctor et comment les lire.
