@@ -1,0 +1,39 @@
+# Documentation Relift
+
+- [Bienvenue](/llms.mdx/docs.md): La documentation de Relift Commerce, le catalogue et le commerce B2B des fabricants et distributeurs de l’habitat.
+- Démarrer
+  - [Installer le moteur](/llms.mdx/docs/demarrage/installation.md): Prérequis, copie des fichiers, configuration client et diagnostic du site.
+  - [Prendre en main l’administration](/llms.mdx/docs/demarrage/prise-en-main.md): Les menus, le tableau de bord, la recherche rapide et le centre de notifications.
+- Catalogue
+  - [La complétude des fiches](/llms.mdx/docs/catalogue/completude.md): Repérer les fiches incomplètes et définir ce qu’est une fiche complète.
+  - [Documents techniques](/llms.mdx/docs/catalogue/documents.md): Joindre fiches techniques, notices, FDS, DoP et autres documents à un produit.
+  - [La fiche produit](/llms.mdx/docs/catalogue/fiche-produit.md): Où saisir chaque information d’un produit : onglets WooCommerce et fiche catalogue Relift.
+  - [Filtres du catalogue](/llms.mdx/docs/catalogue/filtres.md): La recherche paramétrique : par catégorie, gamme, attributs et caractéristiques.
+  - [Catégories et gammes](/llms.mdx/docs/catalogue/gammes-categories.md): Organiser le catalogue : catégories WooCommerce et gammes transversales.
+  - [Pages locales](/llms.mdx/docs/catalogue/pages-locales.md): Une page par ville et par catégorie, avec son texte, ses questions fréquentes et ses données structurées.
+  - [Les univers](/llms.mdx/docs/catalogue/univers.md): Les caractéristiques techniques proposées selon la filière du site.
+- Clients pros
+  - [Comptes pros](/llms.mdx/docs/clients-pros/comptes-pros.md): L’inscription professionnelle, la validation par l’équipe et les trois états d’un compte.
+  - [Groupes de clients](/llms.mdx/docs/clients-pros/groupes.md): Créer des groupes (installateur, distributeur…) qui portent remises, paliers et conditions.
+- Prix et commandes
+  - [Règles de commande](/llms.mdx/docs/tarifs-commandes/regles-de-commande.md): Quantités minimales, franco, remises sur le panier, livraison et paiement par audience.
+  - [Tarifs par groupe](/llms.mdx/docs/tarifs-commandes/tarifs-par-groupe.md): Remises, prix fixes, paliers dégressifs et import de prix par fichier.
+  - [Visibilité des prix et du catalogue](/llms.mdx/docs/tarifs-commandes/visibilite.md): Choisir qui voit les prix, et qui voit quels produits ou catégories.
+- Devis
+  - [Demandes de devis](/llms.mdx/docs/devis/demandes-de-devis.md): Le panier de devis, la réception des demandes et leur suivi par statut.
+- Réglages
+  - [Le fichier client.json](/llms.mdx/docs/reglages/client-json.md): La configuration d’un site client : emplacement, structure et clés principales.
+  - [Écrans de réglage](/llms.mdx/docs/reglages/reglages-admin.md): WooCommerce → Réglages → Relift B2B : les sections, l’ordre de lecture et l’import / export.
+  - [Rôles de l’équipe](/llms.mdx/docs/reglages/roles.md): Qui peut faire quoi : administrateur, responsable catalogue, commercial, rédacteur, synchronisation.
+- Intégrations
+  - [Bricks : balises et boucles](/llms.mdx/docs/integrations/bricks.md): Afficher prix, champs et listes dans Bricks Builder, sans shortcode.
+  - [Webhook signé](/llms.mdx/docs/integrations/webhook.md): Notifier Make, Boost.space, n8n ou un CRM à chaque demande de devis ou compte pro.
+  - [Commandes WP-CLI](/llms.mdx/docs/integrations/wp-cli.md): Diagnostic, initialisation, complétude, import de prix, journal et double authentification en ligne de commande.
+- Sécurité et données
+  - [Connexion sécurisée](/llms.mdx/docs/securite/connexion.md): Double authentification, clés d’accès, alertes de nouvel appareil et limitation des tentatives.
+  - [Journal d’activité](/llms.mdx/docs/securite/journal-activite.md): Qui s’est connecté, qui a changé quoi, et comment le consulter.
+  - [Données personnelles (RGPD)](/llms.mdx/docs/securite/rgpd.md): Export, effacement et durées de conservation des données collectées par Relift.
+- Référence
+  - [Clés de configuration](/llms.mdx/docs/reference/configuration.md): Toutes les clés de client.json avec leur valeur par défaut et leur effet.
+  - [Diagnostic du site](/llms.mdx/docs/reference/diagnostic.md): Les contrôles de wp relift doctor et comment les lire.
+  - [Points d’extension](/llms.mdx/docs/reference/points-extension.md): Filtres et actions pour adapter Relift depuis un thème ou une extension.

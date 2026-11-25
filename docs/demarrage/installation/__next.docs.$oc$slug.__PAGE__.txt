@@ -1,0 +1,55 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/22uvluxcz_t1m.js"
+5:"/_next/static/chunks/3vxcaxl9rybwn.js"
+6:"/_next/static/chunks/039b2uykstso8.js"
+7:"/_next/static/chunks/19b479a35pu1k.js"
+8:I[39756,["$4","$5","$6","$7"],"default"]
+9:I[37457,["$4","$5","$6","$7"],"default"]
+e:"/_next/static/chunks/3tbf6z5wvgdy1.js"
+f:"/_next/static/chunks/0tz6p6l5mlps2.js"
+10:"/_next/static/chunks/1_asspl8xs7c0.js"
+11:"/_next/static/chunks/17t58aah9n9ks.js"
+12:"/_next/static/chunks/3l__e9cre1ujh.js"
+13:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsPage"]
+14:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsTitle"]
+15:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsDescription"]
+16:"MarkdownCopyButton"
+17:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"$16"]
+18:"ViewOptionsPopover"
+19:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"$18"]
+1a:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsBody"]
+1b:I[94157,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"Heading"]
+1c:I[5014,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"default"]
+27:"ViewportBoundary"
+28:I[97367,["$4","$5","$6","$7"],"$27"]
+29:"MetadataBoundary"
+2a:I[97367,["$4","$5","$6","$7"],"$29"]
+2b:"$Sreact.suspense"
+b:X
+b:C
+c:X
+d:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$3","c",{"children":[["$","$L13",null,{"toc":[{"depth":2,"url":"#prérequis","title":"Prérequis"},{"depth":2,"url":"#mise-en-place","title":"Mise en place"},{"depth":3,"url":"#copier-les-extensions","title":"Copier les extensions"},{"depth":3,"url":"#ajouter-la-configuration-du-client","title":"Ajouter la configuration du client"},{"depth":3,"url":"#initialiser-le-site","title":"Initialiser le site"},{"depth":3,"url":"#lancer-le-diagnostic","title":"Lancer le diagnostic"},{"depth":2,"url":"#mises-à-jour","title":"Mises à jour"}],"children":[["$","$L14",null,{"children":"Installer le moteur"}],["$","$L15",null,{"className":"mb-0","children":"Prérequis, copie des fichiers, configuration client et diagnostic du site."}],["$","div",null,{"className":"flex flex-row gap-2 items-center border-b pb-6","children":[["$","$L17",null,{"markdownUrl":"/llms.mdx/docs/demarrage/installation.md"}],["$","$L19",null,{"markdownUrl":"/llms.mdx/docs/demarrage/installation.md","githubUrl":"https://github.com/designbots/relift-docs/blob/main/content/docs/demarrage/installation.mdx"}]]}],["$","$L1a",null,{"children":[["$","p",null,{"children":["Relift est livré comme un jeu d’extensions « must-use » (",["$","code",null,{"children":"mu-plugins"}],") qui se déploie tel quel sur chaque site. Les différences entre clients passent par la configuration, jamais par une copie du code."]}],"\n",["$","$L1b",null,{"as":"h2","id":"prérequis","children":"Prérequis"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"PHP 8.1 (8.2 recommandé) et WordPress 6.6 ou plus."}],"\n",["$","li",null,{"children":"WooCommerce avec le stockage des commandes haute performance (HPOS)."}],"\n",["$","li",null,{"children":"ACF Pro pour les champs de la fiche catalogue."}],"\n",["$","li",null,{"children":"Bricks Builder si vous utilisez le thème enfant Relift (balises dynamiques et filtres natifs)."}],"\n"]}],"\n",["$","div",null,{"className":"flex gap-2 my-4 rounded-xl border bg-fd-card p-3 ps-1 text-sm text-fd-card-foreground","style":{"--callout-color":"var(--color-fd-warning, var(--color-fd-muted))"},"children":[["$","div",null,{"role":"none","className":"w-0.5 bg-(--callout-color)/50 rounded-sm"}],["$","$L1c",null,{"icon":{"name":"triangle-exclamation-point","size":24,"node":[["path",{"d":"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3","key":"wmoenq"}],["path",{"d":"M12 9v4","key":"juzpu7"}],["path",{"d":"M12 17h.01","key":"p32p05"}]],"aliases":["alert-triangle","triangle-alert"]},"className":"size-5 -me-0.5 fill-(--callout-color) text-fd-card"}],["$","div",null,{"className":"flex flex-col gap-2 min-w-0 flex-1","children":[["$","p",null,{"className":"font-medium my-0!","children":"Licences"}],["$","div",null,{"className":"text-fd-muted-foreground prose-no-margin empty:hidden","children":["$","p",null,{"children":"Bricks, ACF Pro et les autres extensions payantes ne sont jamais fournis avec Relift : vous les installez avec vos propres licences."}]}]]}]]}],"\n",["$","$L1b",null,{"as":"h2","id":"mise-en-place","children":"Mise en place"}],"\n",["$","div",null,{"className":"fd-steps","children":[["$","div",null,{"className":"fd-step","children":[["$","$L1b",null,{"as":"h3","id":"copier-les-extensions","children":"Copier les extensions"}],["$","p",null,{"children":["Copiez le contenu du dossier ",["$","code",null,{"children":"mu-plugins/"}]," dans ",["$","code",null,{"children":"wp-content/mu-plugins/"}],". Le fichier ",["$","code",null,{"children":"relift-loader.php"}]," charge ensuite les extensions dans le bon ordre."]}]]}],["$","div",null,{"className":"fd-step","children":[["$","$L1b",null,{"as":"h3","id":"ajouter-la-configuration-du-client","children":"Ajouter la configuration du client"}],["$","p",null,{"children":["Copiez ",["$","code",null,{"children":"config/client.example.json"}]," vers ",["$","code",null,{"children":"wp-content/relift/client.json"}],", puis adaptez-le : nom du site, univers, groupes de clients, règles de prix. Pour un autre emplacement, définissez ",["$","code",null,{"children":"RELIFT_CONFIG_DIR"}]," dans ","$L1d","."]}],"$L1e"]}],"$L1f","$L20"]}],"\n","$L21","\n","$L22"]}]]}],["$L23","$L24"],"$L25"]}],"p":"$@26","v":null,"s":"$c"}}]]
+2:[["children",{"s":{"n":"slug","t":"oc","k":"demarrage/installation","s":[]},"h":64,"d":{"r":["$","$3","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}]}]]}],"p":"$@a","v":"$b","s":"$c"},"c":"$Qd"}]]
+1:[["children",{"s":"docs","h":32,"c":"$Q2"}]]
+0:{"t":{"t":{"s":"","h":80,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L28",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2a",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Installer le moteur · Documentation Relift"}],["$","meta","1",{"name":"description","content":"Prérequis, copie des fichiers, configuration client et diagnostic du site."}],["$","meta","2",{"property":"og:title","content":"Installer le moteur · Documentation Relift"}],["$","meta","3",{"property":"og:description","content":"Prérequis, copie des fichiers, configuration client et diagnostic du site."}],["$","meta","4",{"name":"twitter:card","content":"summary"}],["$","meta","5",{"name":"twitter:title","content":"Installer le moteur · Documentation Relift"}],["$","meta","6",{"name":"twitter:description","content":"Prérequis, copie des fichiers, configuration client et diagnostic du site."}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2c","v":null,"s":"$c"}},"a":"$@2d","u":"$@2e","b":"h7MCWUW-k4AMwATexX3dG"}
+2f:I[44324,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"CodeBlock"]
+30:I[44324,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"Pre"]
+31:I[47873,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"default"]
+32:I[97367,["$4","$5","$6","$7"],"OutletBoundary"]
+1d:["$","code",null,{"children":"wp-config.php"}]
+1e:["$","p",null,{"children":["Bloquez l’accès web à ce dossier, par exemple avec la règle Nginx ",["$","code",null,{"children":"location ^~ /wp-content/relift/ { deny all; }"}],"."]}]
+1f:["$","div",null,{"className":"fd-step","children":[["$","$L1b",null,{"as":"h3","id":"initialiser-le-site","children":"Initialiser le site"}],["$","$L2f",null,{"className":"shiki shiki-themes github-light github-dark","style":{"--shiki-light":"#24292e","--shiki-dark":"#e1e4e8","--shiki-light-bg":"#fff","--shiki-dark-bg":"#24292e"},"tabIndex":"0","icon":"<svg viewBox=\"0 0 24 24\"><path d=\"m 4,4 a 1,1 0 0 0 -0.7070312,0.2929687 1,1 0 0 0 0,1.4140625 L 8.5859375,11 3.2929688,16.292969 a 1,1 0 0 0 0,1.414062 1,1 0 0 0 1.4140624,0 l 5.9999998,-6 a 1.0001,1.0001 0 0 0 0,-1.414062 L 4.7070312,4.2929687 A 1,1 0 0 0 4,4 Z m 8,14 a 1,1 0 0 0 -1,1 1,1 0 0 0 1,1 h 8 a 1,1 0 0 0 1,-1 1,1 0 0 0 -1,-1 z\" fill=\"currentColor\" /></svg>","children":["$","$L30",null,{"children":["$","code",null,{"children":["$","span",null,{"className":"line","children":[["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"wp"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" relift"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" init"}]]}]}]}]}],["$","p",null,{"children":"La commande renseigne le nom du site, crée les rôles, règle WooCommerce sans suggestions et calcule la complétude des fiches."}]]}]
+20:["$","div",null,{"className":"fd-step","children":[["$","$L1b",null,{"as":"h3","id":"lancer-le-diagnostic","children":"Lancer le diagnostic"}],["$","$L2f",null,{"className":"shiki shiki-themes github-light github-dark","style":{"--shiki-light":"#24292e","--shiki-dark":"#e1e4e8","--shiki-light-bg":"#fff","--shiki-dark-bg":"#24292e"},"tabIndex":"0","icon":"<svg viewBox=\"0 0 24 24\"><path d=\"m 4,4 a 1,1 0 0 0 -0.7070312,0.2929687 1,1 0 0 0 0,1.4140625 L 8.5859375,11 3.2929688,16.292969 a 1,1 0 0 0 0,1.414062 1,1 0 0 0 1.4140624,0 l 5.9999998,-6 a 1.0001,1.0001 0 0 0 0,-1.414062 L 4.7070312,4.2929687 A 1,1 0 0 0 4,4 Z m 8,14 a 1,1 0 0 0 -1,1 1,1 0 0 0 1,1 h 8 a 1,1 0 0 0 1,-1 1,1 0 0 0 -1,-1 z\" fill=\"currentColor\" /></svg>","children":["$","$L30",null,{"children":["$","code",null,{"children":["$","span",null,{"className":"line","children":[["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"wp"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" relift"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" doctor"}]]}]}]}]}],["$","p",null,{"children":["Chaque contrôle est affiché avec un statut : OK, avertissement ou erreur. Tout doit être OK ou expliqué. La liste des contrôles est détaillée dans ",["$","$L31",null,{"href":"/docs/reference/diagnostic","children":"le diagnostic du site"}],"."]}]]}]
+21:["$","$L1b",null,{"as":"h2","id":"mises-à-jour","children":"Mises à jour"}]
+22:["$","p",null,{"children":["Seul le dossier ",["$","code",null,{"children":"mu-plugins/"}]," est envoyé à chaque version ; ",["$","code",null,{"children":"client.json"}]," reste sur le serveur du client. Le numéro de version installé figure dans le diagnostic."]}]
+23:["$","script","script-0",{"src":"/_next/static/chunks/17t58aah9n9ks.js","async":true}]
+24:["$","script","script-1",{"src":"/_next/static/chunks/3l__e9cre1ujh.js","async":true}]
+25:["$","$L32",null,{"children":["$","$2b",null,{"name":"Next.MetadataOutlet","children":"$@33"}]}]
+2e:true
+c:300
+33:null
+c:C
+2d:0
+a:"$undefined"
+2c:"$undefined"
+26:"$undefined"

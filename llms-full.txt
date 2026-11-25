@@ -1,0 +1,1082 @@
+# La complétude des fiches (/docs/catalogue/completude)
+
+Chaque fiche porte un indicateur de complétude, recalculé à chaque enregistrement.
+
+## Ce que l’on contrôle [#ce-que-lon-contrôle]
+
+| Élément | Condition par défaut |
+|---|---|
+| Image | Une image mise en avant |
+| Caractéristiques | Toutes les caractéristiques « requises » de l’univers sont renseignées |
+| Documents | Les types de documents exigés sont présents (par défaut : fiche technique) |
+
+## Dans l’administration [#dans-ladministration]
+
+- La liste des produits a une colonne **Complétude** : une pastille « À compléter » avec la liste de ce qui manque.
+- Un filtre au-dessus de la liste isole les fiches incomplètes.
+
+## Régler les critères [#régler-les-critères]
+
+Clé `completeness` de `client.json` :
+
+```json
+"completeness": {
+  "require_image": true,
+  "require_specs": true,
+  "require_document_types": ["fiche_technique"]
+}
+```
+
+Les identifiants de type de document sont `fiche_technique`, `notice`, `fds`, `dop`, `fdes`, `certificat`, `plan`, `garantie`, `autre`.
+
+## Recalculer tout le catalogue [#recalculer-tout-le-catalogue]
+
+Après un changement de critères ou un import massif :
+
+```bash
+wp relift completeness
+```
+
+# Documents techniques (/docs/catalogue/documents)
+
+L’onglet **Documents** de la fiche catalogue est un tableau : une ligne par document.
+
+| Colonne | Rôle |
+|---|---|
+| Type | Fiche technique, notice de pose ou d’utilisation, FDS, DoP, FDES / PEP, certificat ou avis technique, plan ou schéma, garantie, autre |
+| Fichier | Fichier de la médiathèque (pdf, zip, dwg, ifc, rfa, jpg, png) |
+| ou adresse (CDN) | Adresse du fichier s’il est hébergé ailleurs |
+| Version | Par exemple `v3` |
+| Date | Date de publication |
+
+<Callout title="Fichier ou adresse">
+Renseignez l’un ou l’autre. L’adresse sert aux documents hébergés sur un CDN ou chez le fabricant.
+</Callout>
+
+## Ce que ça produit [#ce-que-ça-produit]
+
+- Les documents s’affichent sur la fiche par les modèles du thème.
+- Ils sont décrits dans les données structurées de la page.
+- Les types exigés par la configuration comptent dans la [complétude](/docs/catalogue/completude) : par défaut, la fiche technique.
+
+## Bonnes pratiques [#bonnes-pratiques]
+
+- Nommez les fichiers de façon lisible (`fiche-technique-fenetre-pvc.pdf`).
+- Mettez à jour la **version** et la **date** quand un document change, plutôt que d’ajouter une seconde ligne.
+- Un même PDF peut être réutilisé sur plusieurs produits depuis la médiathèque.
+
+# La fiche produit (/docs/catalogue/fiche-produit)
+
+Une fiche produit se complète à deux endroits : les onglets WooCommerce habituels (prix, inventaire) et la boîte **Fiche catalogue** de Relift, placée sous la boîte « Essentiel ».
+
+## Créer un produit [#créer-un-produit]
+
+<Steps>
+<Step>
+### Ouvrir le formulaire [#ouvrir-le-formulaire]
+
+Menu **Catalogue → Ajouter un produit**. Renseignez le titre, la description, l’image mise en avant, la catégorie et, si besoin, la **gamme**.
+</Step>
+
+<Step>
+### Saisir prix et conditions [#saisir-prix-et-conditions]
+
+Dans la boîte de données produit, onglets **Général** et **Inventaire** : prix public, prix par groupe, prix dégressifs, quantité minimum, visibilité. Détails ci-dessous.
+</Step>
+
+<Step>
+### Compléter la fiche catalogue [#compléter-la-fiche-catalogue]
+
+Onglets **Caractéristiques**, **Documents**, **Compatibilités**, **Identification** et **Synchronisation**.
+</Step>
+
+<Step>
+### Vérifier la complétude [#vérifier-la-complétude]
+
+Après l’enregistrement, la colonne « Complétude » de la liste indique « À compléter » avec les éléments manquants. Voir [la complétude](/docs/catalogue/completude).
+</Step>
+</Steps>
+
+## Onglets de la fiche catalogue [#onglets-de-la-fiche-catalogue]
+
+| Onglet | Contenu |
+|---|---|
+| Caractéristiques | Valeurs techniques propres à l’univers du site, avec leurs unités. Voir [les univers](/docs/catalogue/univers) |
+| Documents | Fiches techniques, notices, FDS, DoP, FDES, certificats, plans, garanties. Voir [les documents](/docs/catalogue/documents) |
+| Compatibilités | Accessoires et pièces compatibles, choisis parmi les produits |
+| Identification | Référence fabricant, EAN / GTIN, objet BIM, conditionnement |
+| Synchronisation | Origine des données et champs pilotés par l’ERP |
+
+### Identification [#identification]
+
+- **Référence fabricant** : à renseigner si elle diffère de l’UGS.
+- **EAN / GTIN** : 8, 12, 13 ou 14 chiffres. Il alimente aussi les données structurées de la page.
+- **Objet BIM** : adresse du fichier.
+- **Conditionnement** : quantité par unité de vente, unité (unité, lot, boîte, carton, palette, m², mètre linéaire, kg, litre) et minimum de commande.
+
+## Réglages commerciaux de la fiche [#réglages-commerciaux-de-la-fiche]
+
+| Où | Champ | Effet |
+|---|---|---|
+| Général | **Visible par** | Réserve le produit à tout le monde, aux comptes pros, ou à des groupes. Voir [la visibilité](/docs/tarifs-commandes/visibilite) |
+| Général | **Prix sur devis** | Aucun prix affiché, même aux pros ; produit non commandable ; bouton de demande de devis conservé |
+| Général | **Prix par groupe** | Prix fixe pour un groupe. Voir [les tarifs par groupe](/docs/tarifs-commandes/tarifs-par-groupe) |
+| Général | **Prix dégressifs (pros)** | Paliers `quantité = remise %` ou prix unitaire HT. S’appliquent aussi aux déclinaisons |
+| Inventaire | **Quantité minimum** et **Vendu par (multiple)** | Règles de quantité. Voir [les règles de commande](/docs/tarifs-commandes/regles-de-commande) |
+
+<Callout title="Champs en lecture seule">
+Si votre ERP pilote certains champs (prix, stock, référence…), ils s’affichent grisés avec la mention « Mis à jour par votre ERP » et sont protégés côté serveur. La liste se règle avec `sync.locked_fields`. Voir [les réglages techniques](/docs/reglages/client-json).
+</Callout>
+
+# Filtres du catalogue (/docs/catalogue/filtres)
+
+Les filtres permettent de chercher par catégorie, gamme, attribut WooCommerce et caractéristique technique (liste ou plage), plus un champ « référence, désignation, EAN ».
+
+## Deux moteurs [#deux-moteurs]
+
+| Moteur | Quand |
+|---|---|
+| Filtres natifs de Bricks | Prioritaires dès que le thème Bricks est actif (réglage `auto`) |
+| Filtres Relift | Solution de secours, avec le shortcode `[relift_filtres]` |
+
+Les filtres se règlent dans **WooCommerce → Réglages → Relift B2B → Catalogue** : activation, moteur, affichage automatique avant la liste de produits (boutique, catégories, gammes), champ de recherche.
+
+## Garanties [#garanties]
+
+- Les compteurs suivent les mêmes règles que la liste : un produit réservé n’est jamais compté.
+- Aucun filtre par prix : les prix peuvent être réservés.
+- Les adresses filtrées sont partageables et ne sont pas indexées.
+
+## Réglages avancés [#réglages-avancés]
+
+Dans `client.json` : `catalogue.facets.attributes` (attributs proposés) et `catalogue.facets.max_options` (nombre maximal de valeurs affichées par filtre).
+
+# Catégories et gammes (/docs/catalogue/gammes-categories)
+
+## Catégories [#catégories]
+
+Les catégories sont celles de WooCommerce : **Catalogue → Catégories**. Elles servent à la navigation, aux remises par catégorie et à la visibilité par audience.
+
+## Gammes [#gammes]
+
+Une **gamme** regroupe des produits de catégories différentes. Exemple : la gamme « Confort PVC » réunit fenêtres, portes-fenêtres et volets.
+
+Menu **Catalogue → Gammes** : ajoutez une gamme, puis cochez-la sur les fiches concernées. La colonne « Gammes » apparaît dans la liste des produits. Chaque gamme a sa page publique sous `/gamme/<nom>/`.
+
+## Visibilité par catégorie [#visibilité-par-catégorie]
+
+Dans l’écran d’une catégorie, le champ **Visible par** réserve la catégorie et ses sous-catégories à une audience. Voir [la visibilité](/docs/tarifs-commandes/visibilite).
+
+## Indexation [#indexation]
+
+Les pages de filtres combinés ne sont pas indexées (`noindex, follow`) : elles dupliqueraient les pages de catégorie.
+
+# Pages locales (/docs/catalogue/pages-locales)
+
+Une **page locale** (menu *Pages locales*) associe une ville à une catégorie de produits. Chaque page porte son propre texte, ses questions fréquentes et, si vous les fournissez, les coordonnées d’un revendeur réel.
+
+## Champs [#champs]
+
+| Champ | Rôle |
+|---|---|
+| Ville, Département | Localisation |
+| Catégorie de produits | Identifiant du terme de la catégorie |
+| Questions fréquentes | Une par ligne, au format `Question ? \| Réponse` |
+| Revendeur, adresse, téléphone | À renseigner seulement s’ils sont réels |
+
+## Rédiger [#rédiger]
+
+Le texte propre à la page doit faire au moins **300 caractères** : en dessous, la page ressemble à un doublon d’une autre. Écrivez ce qui est vrai pour cette ville et cette catégorie.
+
+## Ce que le moteur ajoute [#ce-que-le-moteur-ajoute]
+
+Les données structurées (WebPage, FAQPage, LocalBusiness) décrivent uniquement ce qui est écrit sur la page. Trois shortcodes affichent les produits de la catégorie, les liens vers les autres zones et la FAQ : `[relift_zone_produits]`, `[relift_zone_liens]`, `[relift_zone_faq]`.
+
+<Callout title="Aucune promesse de classement">
+Relift fournit une structure propre ; il ne garantit ni classement, ni citation par des moteurs de réponse.
+</Callout>
+
+# Les univers (/docs/catalogue/univers)
+
+Un **univers** décide des caractéristiques que la fiche propose. Il se choisit une fois pour le site, avec la clé `univers` de `client.json`.
+
+| Clé | Nom | Filière | Caractéristiques |
+|---|---|---|---|
+| `lagon` | Lagon | Piscine et spa | 10 |
+| `solaire` | Solaire | Terrasse et extérieur | 9 |
+| `canopee` | Canopée | Paysage | 8 |
+| `atelier` | Atelier | Menuiserie et fermetures | 10 |
+| `mineral` | Minéral | Isolation et enveloppe | 7 |
+| `confort` | Confort | Chauffage et sanitaire | 8 |
+
+Chaque caractéristique a un nom, une unité (mm, m³, kW…) et un indicateur « requise ». Les caractéristiques requises comptent dans la [complétude](/docs/catalogue/completude).
+
+## Afficher l’univers actif [#afficher-lunivers-actif]
+
+```bash
+wp relift univers list
+wp relift univers show
+```
+
+## Adapter un univers à un client [#adapter-un-univers-à-un-client]
+
+Un univers peut être surchargé pour un client : déposez un fichier `<clé>.json` dans le dossier `univers/` de `RELIFT_CONFIG_DIR`. Le fichier suit la structure des univers livrés (nom, filière, couleur d’accent, liste de caractéristiques).
+
+## Données structurées [#données-structurées]
+
+Les caractéristiques saisies sont ajoutées au JSON-LD Product de WooCommerce (`additionalProperty`, avec leurs unités), ainsi que la référence fabricant (`mpn`), le GTIN et les documents (`subjectOf`). Les accessoires compatibles alimentent `isRelatedTo` et `isAccessoryOrSparePartFor`. Seul ce qui est saisi sur la fiche est publié.
+
+# Comptes pros (/docs/clients-pros/comptes-pros)
+
+Un **compte pro** ouvre l’accès aux prix et aux conditions réservés aux professionnels, sans extension tierce.
+
+## Inscription [#inscription]
+
+Le formulaire d’inscription pro se trouve sur `wp-login.php?action=relift_pro`. Il est relié depuis l’écran de connexion ; vous pouvez aussi le proposer ailleurs :
+
+- le shortcode `[relift_compte_pro label="Créer un compte pro"]`, masqué aux personnes déjà connectées ;
+- la fonction `relift_pro_signup_url()` pour les modèles.
+
+Le formulaire recueille la société, le **SIRET** (14 chiffres, contrôlé), le numéro de TVA intracommunautaire (facultatif, déduit du SIRET si vide et contrôlé auprès du service européen **VIES**), le groupe d’activité, le nom, l’e-mail, le téléphone, le code postal, la ville et un mot de passe. Les messages d’erreur apparaissent à côté du champ concerné.
+
+Réglage : **WooCommerce → Réglages → Relift B2B → Comptes pros** (ou `b2b.signup` dans `client.json`).
+
+## Les trois états [#les-trois-états]
+
+| État | Effet |
+|---|---|
+| En attente | Le compte est traité comme un visiteur : pas de prix réservés |
+| Validé | Accès aux prix, remises et conditions de son groupe |
+| Refusé | Pas d’accès aux conditions pros |
+
+## Valider ou refuser [#valider-ou-refuser]
+
+Deux modes, au réglage **Validation des comptes** (`b2b.signup_approval`) :
+
+- **Manuelle** (par défaut) : l’équipe est prévenue par e-mail et valide chaque demande.
+- **Automatique** (`vies`) : le compte est activé quand le numéro de TVA est validé par le VIES.
+
+<Steps>
+<Step>
+### Repérer les demandes [#repérer-les-demandes]
+
+Le tableau de bord signale les comptes à valider ; la liste **Clients pros** propose la vue « Comptes pros à valider ».
+</Step>
+
+<Step>
+### Décider [#décider]
+
+Sur la ligne du compte : **Valider le compte pro** ou **Refuser**. En lot, cochez plusieurs comptes et choisissez « Valider les comptes pros » ou « Refuser les comptes pros ».
+</Step>
+
+<Step>
+### Informer [#informer]
+
+Le demandeur reçoit un e-mail d’accusé de réception à l’inscription, puis un e-mail à la décision.
+</Step>
+</Steps>
+
+L’e-mail d’alerte de l’équipe part à l’adresse **Alertes d’inscription à** (`b2b.signup_email`) ; à défaut, à l’adresse des demandes de devis, puis à l’e-mail d’administration.
+
+## Sur les commandes [#sur-les-commandes]
+
+La société, le SIRET, le numéro de TVA et le groupe du compte pro sont copiés sur chaque commande : ils apparaissent dans l’administration, les e-mails, Mon compte et sont disponibles pour vos connecteurs de facturation.
+
+## B2BKing [#b2bking]
+
+Si votre site utilise déjà B2BKing, `b2b.plugin` vaut `b2bking` : Relift lit alors ses données de compte et reste inactif sur l’inscription et les tarifs.
+
+# Groupes de clients (/docs/clients-pros/groupes)
+
+Un **groupe** rassemble des clients qui ont les mêmes conditions. Le groupe est choisi à l’inscription, puis modifiable par l’équipe sur la fiche du compte.
+
+## Créer ou modifier les groupes [#créer-ou-modifier-les-groupes]
+
+**WooCommerce → Réglages → Relift B2B → Comptes pros**, tableau **Groupes** : un nom affiché et un identifiant (sans accents ni espaces).
+
+```json
+"groups": [
+  { "slug": "installateur", "label": "Installateur, poseur" },
+  { "slug": "distributeur", "label": "Distributeur, négoce" },
+  { "slug": "prescripteur", "label": "Architecte, bureau d’études" }
+]
+```
+
+<Callout type="warn" title="Identifiant stable">
+L’identifiant sert dans les règles de prix et de visibilité. Le modifier après coup demande de reprendre ces règles.
+</Callout>
+
+## Ce qu’un groupe détermine [#ce-quun-groupe-détermine]
+
+- remise générale et remises par catégorie ;
+- paliers dégressifs et minimum de commande ;
+- prix fixes par produit ;
+- produits et catégories visibles ;
+- modes de livraison et de paiement proposés.
+
+Chaque point se règle dans [les tarifs par groupe](/docs/tarifs-commandes/tarifs-par-groupe) et [les règles de commande](/docs/tarifs-commandes/regles-de-commande).
+
+# Installer le moteur (/docs/demarrage/installation)
+
+Relift est livré comme un jeu d’extensions « must-use » (`mu-plugins`) qui se déploie tel quel sur chaque site. Les différences entre clients passent par la configuration, jamais par une copie du code.
+
+## Prérequis [#prérequis]
+
+- PHP 8.1 (8.2 recommandé) et WordPress 6.6 ou plus.
+- WooCommerce avec le stockage des commandes haute performance (HPOS).
+- ACF Pro pour les champs de la fiche catalogue.
+- Bricks Builder si vous utilisez le thème enfant Relift (balises dynamiques et filtres natifs).
+
+<Callout type="warn" title="Licences">
+Bricks, ACF Pro et les autres extensions payantes ne sont jamais fournis avec Relift : vous les installez avec vos propres licences.
+</Callout>
+
+## Mise en place [#mise-en-place]
+
+<Steps>
+<Step>
+### Copier les extensions [#copier-les-extensions]
+
+Copiez le contenu du dossier `mu-plugins/` dans `wp-content/mu-plugins/`. Le fichier `relift-loader.php` charge ensuite les extensions dans le bon ordre.
+</Step>
+
+<Step>
+### Ajouter la configuration du client [#ajouter-la-configuration-du-client]
+
+Copiez `config/client.example.json` vers `wp-content/relift/client.json`, puis adaptez-le : nom du site, univers, groupes de clients, règles de prix. Pour un autre emplacement, définissez `RELIFT_CONFIG_DIR` dans `wp-config.php`.
+
+Bloquez l’accès web à ce dossier, par exemple avec la règle Nginx `location ^~ /wp-content/relift/ { deny all; }`.
+</Step>
+
+<Step>
+### Initialiser le site [#initialiser-le-site]
+
+```bash
+wp relift init
+```
+
+La commande renseigne le nom du site, crée les rôles, règle WooCommerce sans suggestions et calcule la complétude des fiches.
+</Step>
+
+<Step>
+### Lancer le diagnostic [#lancer-le-diagnostic]
+
+```bash
+wp relift doctor
+```
+
+Chaque contrôle est affiché avec un statut : OK, avertissement ou erreur. Tout doit être OK ou expliqué. La liste des contrôles est détaillée dans [le diagnostic du site](/docs/reference/diagnostic).
+</Step>
+</Steps>
+
+## Mises à jour [#mises-à-jour]
+
+Seul le dossier `mu-plugins/` est envoyé à chaque version ; `client.json` reste sur le serveur du client. Le numéro de version installé figure dans le diagnostic.
+
+# Prendre en main l’administration (/docs/demarrage/prise-en-main)
+
+L’administration reprend WordPress avec des menus au vocabulaire du catalogue. Les rôles de l’équipe voient uniquement ce qui leur sert ; un administrateur voit toujours tout.
+
+## Les menus [#les-menus]
+
+| Menu | Contenu |
+|---|---|
+| Tableau de bord | Vue d’ensemble : demandes de devis récentes, comptes pros à valider, état de la synchronisation |
+| Catalogue | Produits, catégories, gammes, attributs |
+| Documents et médias | Fichiers (fiches techniques, notices, images) |
+| Commandes | Commandes WooCommerce, avec société, SIRET, TVA et groupe de l’acheteur |
+| Clients pros | Comptes clients, validation des comptes pros |
+| Pages du site | Pages WordPress |
+| Actualités et guides | Articles |
+| Réglages | Écran Relift et réglages WooCommerce « Relift B2B » |
+| Mon profil | Votre compte, double authentification, clés d’accès |
+
+<Callout title="Un menu absent ?">
+Les menus affichés dépendent de votre rôle. Voir [les rôles de l’équipe](/docs/reglages/roles).
+</Callout>
+
+## Tableau de bord, recherche, notifications [#tableau-de-bord-recherche-notifications]
+
+- Le **tableau de bord** regroupe les demandes de devis, les comptes pros en attente et l’état de la synchronisation.
+- La **recherche rapide** (Ctrl ou ⌘ + K) retrouve un produit par nom ou référence, ou une demande de devis.
+- Le **centre de notifications** (la cloche) rassemble les messages des extensions et de WordPress : mises à jour, réglages à terminer, erreurs. Seules les confirmations d’action restent dans la page.
+
+## Revenir à l’interface WordPress classique [#revenir-à-linterface-wordpress-classique]
+
+Chacun peut revenir à l’interface WordPress habituelle depuis le menu du compte. Pour tout le site, l’option `admin.app_ui` à `false` dans `client.json` désactive l’interface Relift et garde l’interface WordPress habillée aux couleurs du client.
+
+# Demandes de devis (/docs/devis/demandes-de-devis)
+
+## Côté visiteur [#côté-visiteur]
+
+Le visiteur ajoute des produits à un **panier de devis**, gardé dans son navigateur (les pages restent donc en cache), puis envoie sa demande depuis la page de devis.
+
+<Steps>
+<Step>
+### Créer la page [#créer-la-page]
+
+Une page contenant le shortcode `[relift_devis_panier]`, par défaut à l’adresse `/demande-de-devis/` (réglage `b2b.quote_page`).
+</Step>
+
+<Step>
+### Placer les boutons [#placer-les-boutons]
+
+Sur les fiches WooCommerce, le bouton « Ajouter au devis » s’ajoute automatiquement (`b2b.quote_button_auto`). Dans Bricks, utilisez l’élément Shortcode avec `[relift_devis_bouton]` et `[relift_devis_compteur]`.
+</Step>
+</Steps>
+
+L’envoi est protégé : champ piège, délai minimal, 5 demandes par heure et par adresse. Le formulaire recueille le consentement et n’affiche jamais de prix réservé.
+
+## Côté équipe [#côté-équipe]
+
+Menu **Demandes de devis** : chaque demande est une fiche avec société, produits, date de réception, **statut** et **note interne**.
+
+| Statut | Sens |
+|---|---|
+| Nouvelle | Pas encore traitée |
+| En cours | Prise en charge |
+| Devis envoyé | Réponse envoyée au client |
+| Acceptée | Le client accepte |
+| Sans suite | Clôturée |
+
+Le statut se change sur la fiche ou depuis l’écran « Demandes de devis » du tableau de bord. Les demandes sont visibles par les rôles Commercial et Responsable catalogue.
+
+## E-mails [#e-mails]
+
+À chaque demande, deux e-mails partent : un à l’équipe (adresse `b2b.quote_email`, ou e-mail d’administration si vide) et un accusé de réception au demandeur.
+
+## Données personnelles [#données-personnelles]
+
+Les demandes sont incluses dans l’export et l’effacement RGPD de WordPress. Au-delà de `b2b.quote_retention_months` (36 mois par défaut), les coordonnées sont anonymisées.
+
+## Brancher un CRM [#brancher-un-crm]
+
+Chaque nouvelle demande peut être envoyée à un outil d’automatisation : voir [le webhook signé](/docs/integrations/webhook).
+
+# Bienvenue (/docs)
+
+Relift Commerce ajoute à WordPress et WooCommerce ce qu’un catalogue professionnel demande : fiches techniques, comptes pros vérifiés, prix par groupe, devis et commandes avec conditions. Tout se règle dans l’administration de votre site, sans extension B2B tierce.
+
+Cette documentation s’adresse à l’équipe qui fait vivre le site : responsable catalogue, commercial, administrateur.
+
+<Cards>
+<Card title="Installer et prendre en main" href="/docs/demarrage/installation">
+Mettre en place le moteur, lancer le diagnostic du site, repérer les menus.
+</Card>
+
+<Card title="Gérer le catalogue" href="/docs/catalogue/fiche-produit">
+Fiches, caractéristiques, documents, gammes, complétude, filtres, pages locales.
+</Card>
+
+<Card title="Comptes pros et prix" href="/docs/clients-pros/comptes-pros">
+Valider les comptes, créer des groupes, régler remises, paliers et visibilité.
+</Card>
+
+<Card title="Demandes de devis" href="/docs/devis/demandes-de-devis">
+Recevoir, suivre et clôturer les demandes.
+</Card>
+
+<Card title="Réglages" href="/docs/reglages/reglages-admin">
+Les écrans de réglage, le fichier client.json et les rôles.
+</Card>
+
+<Card title="Intégrations" href="/docs/integrations/webhook">
+Webhook signé, balises et boucles Bricks, commandes WP-CLI.
+</Card>
+</Cards>
+
+## Ce que la documentation couvre [#ce-que-la-documentation-couvre]
+
+Chaque page décrit une fonction **livrée** : ce qu’elle fait, où la trouver dans l’administration, ce qu’il faut régler. Les pages de référence listent les clés de configuration, les commandes et les points d’extension pour les équipes techniques.
+
+<Callout title="Vocabulaire">
+Dans l’administration, le menu **Catalogue** est le catalogue de produits WooCommerce, **Clients pros** la liste des comptes, **Réglages** l’écran Relift. L’interface suit ce vocabulaire plutôt que celui de WordPress.
+</Callout>
+
+# Bricks : balises et boucles (/docs/integrations/bricks)
+
+Relift s’intègre à Bricks Builder **sans shortcode** pour l’affichage du catalogue : tout se règle dans l’éditeur, par des éléments Bricks et des données dynamiques.
+
+## Balises du groupe « Relift » [#balises-du-groupe--relift-]
+
+Disponibles dans le sélecteur de données dynamiques, dans les modèles, les composants et les boucles de requête :
+
+| Balise | Résultat |
+|---|---|
+| `{rl_prix_carte}` | « dès 1 234 € HT » si le visiteur voit les prix, sinon « Prix pro HT après connexion » |
+| `{rl_prix_ht}` | Le montant HT seul, vide si le prix est réservé |
+| `{rl_prix_visible}` | `1` si le prix est visible, vide sinon : à utiliser dans les conditions d’élément |
+
+La décision d’afficher un prix reste prise par le plugin : le thème affiche, il ne décide pas.
+
+## Balises natives de Bricks utiles au catalogue [#balises-natives-de-bricks-utiles-au-catalogue]
+
+- `{post_terms_<taxonomie>}` pour toute taxonomie (gammes `rl_gamme`, catégories, attributs `pa_*`) ; ajoutez `:plain` pour du texte sans lien ;
+- `{acf_<champ>}` pour tout champ ACF (caractéristiques, documents, références) ;
+- `{post_title}`, `{post_url}`, `{featured_image}`, `{post_excerpt}`.
+
+## Boucles de requête [#boucles-de-requête]
+
+Dans Bricks, la **carte** porte la boucle de requête : Bricks répète l’élément porteur. Les produits, articles, réalisations, témoignages et pages locales se listent ainsi. Les produits réservés sont exclus des boucles, des compteurs et des filtres pour les visiteurs non autorisés.
+
+## Shortcodes conservés [#shortcodes-conservés]
+
+Quelques fonctions restent des shortcodes, à placer dans l’élément Shortcode de Bricks : `[relift_devis_bouton]`, `[relift_devis_compteur]`, `[relift_devis_panier]`, `[relift_compte_pro]`, `[relift_filtres]`.
+
+## Aides pour les modèles PHP [#aides-pour-les-modèles-php]
+
+`relift_spec_rows()`, `relift_documents()`, `relift_config()` et `relift_can_see_price()`.
+
+# Webhook signé (/docs/integrations/webhook)
+
+Relift peut notifier un outil d’automatisation (Make, Boost.space, n8n, votre CRM) à chaque événement important. L’envoi est un `POST` JSON signé, parti à la fin de la requête pour ne pas ralentir le visiteur.
+
+## Activer [#activer]
+
+<Steps>
+<Step>
+### Définir le secret [#définir-le-secret]
+
+Dans `wp-config.php`, jamais dans un dépôt ni un e-mail :
+
+```php
+define('RELIFT_WEBHOOK_SECRET', 'une-longue-valeur-aléatoire');
+```
+</Step>
+
+<Step>
+### Renseigner l’adresse [#renseigner-ladresse]
+
+**Relift B2B → Catalogue → Automatisation** (ou `automation.webhook.url`). En production, l’adresse doit commencer par `https://`.
+</Step>
+
+<Step>
+### Choisir les événements [#choisir-les-événements]
+
+Cochez les événements voulus (`automation.webhook.events`).
+</Step>
+</Steps>
+
+Sans secret, **aucun envoi n’est fait** et l’échec est inscrit au journal d’activité.
+
+## Événements [#événements]
+
+| Événement | Quand |
+|---|---|
+| `quote_created` | Demande de devis reçue |
+| `pro_signup` | Demande de compte pro |
+| `pro_approved` | Compte pro validé |
+| `pro_refused` | Compte pro refusé |
+
+## Contenu [#contenu]
+
+```json
+{
+  "event": "quote_created",
+  "site": "https://exemple.fr",
+  "sent_at": "2026-11-25T13:00:00+00:00",
+  "data": {
+    "quote_id": 123,
+    "contact": { "company": "…", "name": "…", "email": "…", "phone": "…" },
+    "lines": [ { "sku": "…", "name": "…", "qty": 2 } ],
+    "consent_at": "…",
+    "source": "…"
+  }
+}
+```
+
+Le contenu est volontairement minimal : **aucun prix** (ils peuvent être réservés), les coordonnées de la personne et la date de son consentement. Pour les événements `pro_*`, `data` contient `user_id`, `contact`, `group`, `status` et `consent_at`.
+
+## Vérifier la signature [#vérifier-la-signature]
+
+Chaque envoi porte deux en-têtes : `X-Relift-Event` et `X-Relift-Signature`, de la forme `t=<horodatage>,v1=<signature>`. La signature est un HMAC-SHA256 de `<horodatage>.<corps brut>` avec votre secret.
+
+```php
+$entete = $_SERVER['HTTP_X_RELIFT_SIGNATURE'] ?? '';
+parse_str(str_replace(',', '&', $entete), $p);   // t, v1
+$corps = file_get_contents('php://input');
+$attendu = hash_hmac('sha256', $p['t'] . '.' . $corps, $secret);
+if (!hash_equals($attendu, $p['v1'] ?? '') || abs(time() - (int) $p['t']) > 300) {
+    http_response_code(401); exit;
+}
+```
+
+Refusez les envois dont l’horodatage est trop ancien. Répondez avec un code `2xx` pour confirmer la réception : tout autre code est inscrit au journal d’activité.
+
+# Commandes WP-CLI (/docs/integrations/wp-cli)
+
+Les commandes `wp relift` servent aux équipes techniques et aux déploiements. Elles s’exécutent depuis le dossier du site.
+
+## Site et catalogue [#site-et-catalogue]
+
+```bash
+wp relift doctor [--format=json]    # santé du site ; code de sortie 1 en cas d’échec
+wp relift init                      # initialise un site cloné
+wp relift config                    # configuration active
+wp relift univers list|show|set     # univers et caractéristiques
+wp relift completeness              # recalcule la complétude des fiches
+wp relift schema <id>               # JSON-LD Product enrichi d’une fiche
+```
+
+## Prix [#prix]
+
+```bash
+wp relift prices import prix.csv [--dry-run]
+wp relift prices show <sku>
+```
+
+Format du fichier : voir [tarifs par groupe](/docs/tarifs-commandes/tarifs-par-groupe).
+
+## Sécurité [#sécurité]
+
+```bash
+wp relift log list [--event=<événement>] [--limit=<n>]
+wp relift log purge
+wp relift 2fa status
+wp relift 2fa reset <identifiant, e-mail ou numéro>
+```
+
+`2fa reset` sert quand une personne perd son téléphone : elle devra réactiver la double authentification.
+
+<Callout type="warn" title="Catalogue de démonstration">
+`wp relift demo install` crée un catalogue d’exemple pour la recette. Ne l’utilisez jamais sur un site de production.
+</Callout>
+
+# Clés de configuration (/docs/reference/configuration)
+
+Les clés s’écrivent en JSON imbriqué dans `client.json`, ou en notation pointée dans `locked` (`b2b.prices`).
+
+## Identité et univers [#identité-et-univers]
+
+| Clé | Défaut | Effet |
+|---|---|---|
+| `client.name` | Titre du site | Nom affiché |
+| `client.logo` | vide | Logo de la page de connexion |
+| `client.brand_color` | `#363644` | Couleur d’accent |
+| `univers` | `atelier` | `lagon`, `solaire`, `canopee`, `atelier`, `mineral` ou `confort` |
+
+## Comptes, prix, commandes (`b2b`) [#comptes-prix-commandes-b2b]
+
+| Clé | Défaut | Effet |
+|---|---|---|
+| `b2b.plugin` | `relift` | `relift` ou `b2bking` |
+| `b2b.prices` | `pros` | `public`, `logged_in` ou `pros` |
+| `b2b.enforce_display` | `auto` | Message « Prix réservés » seulement si B2BKing est absent |
+| `b2b.signup` | `true` | Inscription pro |
+| `b2b.signup_approval` | `manual` | `manual` ou `vies` |
+| `b2b.signup_email` | vide | Destinataire des inscriptions |
+| `b2b.groups` | 3 groupes | Liste `{slug, label}` |
+| `b2b.pricing.tax_display` | `excl` | `excl`, `incl` ou vide (réglage WooCommerce) |
+| `b2b.pricing.suffix` | `HT` | Mention après le prix |
+| `b2b.pricing.tiers_for` | `pros` | `pros` ou `all` |
+| `b2b.pricing.groups.<groupe>` | vide | `discount`, `categories`, `tiers`, `min_order` |
+| `b2b.cart_rules` | vide | Franco et remise par seuil |
+| `b2b.payment_rules` | vide | Moyens de paiement réservés (`for` : `pros`, `nonpros`, `groups`) |
+| `b2b.shipping_rules` | vide | Modes de livraison réservés (`i:<id>` pour un mode d’une zone, `t:<type>` pour toutes les zones) |
+| `b2b.quantities_for` | `all` | `all` ou `pros` |
+| `b2b.quotes` | `true` | Demandes de devis |
+| `b2b.quote_email` | vide | Destinataire des demandes |
+| `b2b.quote_page` | `/demande-de-devis/` | Page contenant `[relift_devis_panier]` |
+| `b2b.quote_button_auto` | `true` | Bouton ajouté aux fiches WooCommerce |
+| `b2b.quote_retention_months` | `36` | Anonymisation des demandes |
+
+Exemple de règles de panier :
+
+```json
+"cart_rules": [
+  { "type": "franco", "min": 500 },
+  { "type": "discount", "min": 1500, "discount": 3, "groups": ["distributeur"], "label": "Remise volume" }
+]
+```
+
+## Catalogue et synchronisation [#catalogue-et-synchronisation]
+
+| Clé | Défaut | Effet |
+|---|---|---|
+| `completeness.require_image` | `true` | Image exigée |
+| `completeness.require_specs` | `true` | Caractéristiques requises exigées |
+| `completeness.require_document_types` | `["fiche_technique"]` | Types de documents exigés |
+| `catalogue.facets.enabled` | `true` | Filtres actifs |
+| `catalogue.facets.engine` | `auto` | `auto`, `relift`, `bricks` ou `off` |
+| `catalogue.facets.auto` | `true` | Filtres avant la liste de produits |
+| `catalogue.facets.search` | `true` | Champ « référence, désignation, EAN » |
+| `catalogue.facets.attributes` | vide | Attributs proposés |
+| `catalogue.facets.max_options` | `12` | Valeurs affichées par filtre |
+| `sync.locked_fields` | vide | Champs pilotés par l’ERP : `_regular_price`, `_sale_price`, `_stock`, `_stock_status`, `_sku`, `_weight`, `_length`, `_width`, `_height`, `rl_gtin`, `rl_specs_<nom>`… |
+| `schema.enrich_woocommerce` | `true` | Enrichit le JSON-LD Product |
+
+## Automatisation, sécurité, administration [#automatisation-sécurité-administration]
+
+| Clé | Défaut | Effet |
+|---|---|---|
+| `automation.webhook.url` | vide | Adresse de réception (https en production) |
+| `automation.webhook.events` | tous | `quote_created`, `pro_signup`, `pro_approved`, `pro_refused` |
+| `security.two_factor.enabled` | `true` | Double authentification proposée |
+| `security.two_factor.required_roles` | rôles de l’équipe | Rôles pour qui elle devient obligatoire |
+| `security.two_factor.grace_days` | `7` | Délai avant obligation |
+| `security.login_alerts` | `team` | `team`, `all` ou `off` |
+| `security.passkeys.enabled` | `true` | Clés d’accès |
+| `security.passkeys.max_per_user` | `10` | Nombre maximal par personne |
+| `security.headers` | `true` | En-têtes de sécurité |
+| `security.log_retention_months` | `12` | Conservation du journal |
+| `admin.white_label` | `true` | Marque blanche |
+| `admin.app_ui` | `true` | Interface Relift (`false` : interface WordPress habillée) |
+| `admin.login.*` | — | `title`, `text`, `points`, `image` |
+| `support.*` | — | `label`, `email`, `booking_url`, `docs_url` |
+| `locked` | vide | Chemins imposés, en lecture seule dans l’administration |
+
+# Diagnostic du site (/docs/reference/diagnostic)
+
+```bash
+wp relift doctor
+```
+
+Chaque contrôle renvoie un identifiant, un libellé, un statut (**ok**, **warning**, **error**) et un message. Le code de sortie vaut 1 en cas d’erreur ; `--format=json` produit une sortie lisible par une machine.
+
+| Contrôle | Ce qu’il vérifie |
+|---|---|
+| PHP, WordPress, WooCommerce | Versions minimales |
+| Stockage des commandes (HPOS) | Activé |
+| ACF Pro | Présent pour les champs de la fiche |
+| Bricks | Présent, avec ses balises SEO désactivées si SEOPress est utilisé |
+| SEOPress | Détection |
+| B2BKing | Présent si la configuration l’attend |
+| Configuration client, dossier de configuration | Fichier valide, dossier non lisible depuis le web |
+| Univers | Univers actif et nombre de caractéristiques |
+| Fiches | Complétude du catalogue |
+| Filtres du catalogue | Moteur actif |
+| Automatisation | Secret et adresse du webhook |
+| Journal d’activité | Table et purge planifiée |
+| HTTPS | Site servi en https |
+| Mémoire PHP, cache objet | Réglages du serveur |
+| Mode débogage, affichage des erreurs, éditeur de fichiers | Réglages de production |
+| Mises à jour | Mises à jour en attente |
+| Catalogue de démonstration | Absent d’un site de production |
+
+## Ajouter un contrôle [#ajouter-un-contrôle]
+
+Les équipes techniques peuvent ajouter leurs propres contrôles avec le filtre `relift/health/checks`.
+
+# Points d’extension (/docs/reference/points-extension)
+
+Les hooks de Relift commencent tous par `relift/`.
+
+## Configuration et catalogue [#configuration-et-catalogue]
+
+| Hook | Rôle |
+|---|---|
+| `relift/config` | Modifier la configuration finale |
+| `relift/univers` | Adapter l’univers actif |
+| `relift/specs/rows` | Lignes de caractéristiques affichées |
+| `relift/schema/product` | JSON-LD Product enrichi |
+| `relift/completeness/evaluate` | Règles de complétude |
+| `relift/sync/locked_fields` | Champs en lecture seule |
+| `relift/health/checks` | Contrôles du diagnostic |
+| `relift/settings/sections` | Sections de l’écran de réglages |
+
+## Comptes, prix et devis [#comptes-prix-et-devis]
+
+| Hook | Rôle |
+|---|---|
+| `relift/b2b/can_see_price` | Décision d’afficher un prix |
+| `relift/b2b/price_message` | Message affiché à la place du prix |
+| `relift/b2b/account_status` | Statut d’un compte |
+| `relift/b2b/quote_rate_limit` | Limite d’envoi des devis |
+| `relift/b2b/quote_ack_body` | Texte de l’accusé de réception |
+| `relift/b2b/quote_created` (action) | Après la création d’une demande |
+| `relift/commerce/mail` | Sujet et texte des e-mails de compte |
+| `relift/commerce/prices_imported` (action) | Après un import de prix |
+
+## Administration et sécurité [#administration-et-sécurité]
+
+| Hook | Rôle |
+|---|---|
+| `relift/admin/menu_map` | Carte des menus des rôles client |
+| `relift/admin/roles` | Rôles Relift |
+| `relift/admin/dashboard/quotes`, `…/pending_accounts`, `…/sync` | Données du tableau de bord |
+| `relift/security/headers_list` | En-têtes de sécurité |
+| `relift/security/event` (action) | Écrire dans le journal d’activité |
+
+```php
+do_action('relift/security/event', 'mon_evenement', $user_id, 'détail');
+```
+
+# Le fichier client.json (/docs/reglages/client-json)
+
+`client.json` décrit un site client. Il se trouve dans `wp-content/relift/` (ou dans le dossier défini par `RELIFT_CONFIG_DIR`) et n’est pas versionné avec le code.
+
+```json
+{
+  "client": { "name": "Exemple Menuiseries", "brand_color": "#363644" },
+  "univers": "atelier",
+  "b2b": { "prices": "pros", "signup": true, "signup_approval": "manual" },
+  "locked": ["b2b.prices"]
+}
+```
+
+## Clés principales [#clés-principales]
+
+| Clé | Rôle |
+|---|---|
+| `client.name`, `client.logo`, `client.brand_color` | Nom du site, logo de la page de connexion, couleur d’accent |
+| `univers` | Filière : décide des caractéristiques de la fiche |
+| `b2b.*` | Comptes pros, prix, groupes, règles de commande, devis |
+| `security.*` | Double authentification, alertes, clés d’accès, journal |
+| `support.*` | Libellé, e-mail, lien de rendez-vous et guide affichés au client |
+| `sync.locked_fields` | Champs pilotés par l’ERP, en lecture seule |
+| `completeness.*` | Ce qui rend une fiche complète |
+| `catalogue.facets.*` | Recherche paramétrique |
+| `automation.webhook.*` | Webhook sortant signé |
+| `admin.*` | Marque blanche, interface, page de connexion |
+| `locked` | Chemins imposés, en lecture seule dans l’administration |
+
+La liste complète, avec valeurs par défaut, est dans [la référence de configuration](/docs/reference/configuration).
+
+## Marque et écran de connexion [#marque-et-écran-de-connexion]
+
+`admin.white_label` active la marque blanche. `admin.login.*` personnalise l’écran de connexion : `title`, `text`, `points` (3 ou 4 arguments) et `image` ; sans image, l’écran montre une capture du tableau de bord.
+
+## Après une modification [#après-une-modification]
+
+Le fichier est relu à chaque chargement. Les listes remplacent les valeurs précédentes, les objets sont fusionnés.
+
+<Callout title="Sécurité du dossier">
+Le dossier de configuration ne doit pas être lisible depuis le web. Voir [l’installation](/docs/demarrage/installation).
+</Callout>
+
+# Écrans de réglage (/docs/reglages/reglages-admin)
+
+Les réglages B2B se modifient dans **WooCommerce → Réglages → Relift B2B**. Le menu **Réglages** (Relift) regroupe les réglages du site, du support et de la marque blanche.
+
+## Les sections [#les-sections]
+
+| Section | Ce que vous y réglez |
+|---|---|
+| Comptes pros | Inscription, validation (manuelle ou VIES), destinataire des alertes, groupes |
+| Tarifs | Affichage HT, mention, groupes (remise, minimum, paliers), remises par catégorie |
+| Panier et livraison | Règles de franco et de remise, règles de quantité, modes de livraison réservés |
+| Paiement | Moyens de paiement réservés, paiement à échéance |
+| Catalogue | Qui voit les prix, demandes de devis, webhook, recherche et filtres, visibilité |
+| Sécurité | Double authentification, alertes de connexion, clés d’accès |
+| Import et export | Copier la configuration d’un site à l’autre |
+
+## D’où vient une valeur [#doù-vient-une-valeur]
+
+Relift lit chaque réglage dans cet ordre, du plus faible au plus fort :
+
+1. les valeurs par défaut du moteur ;
+2. le fichier `client.json` ;
+3. les réglages saisis dans l’administration ;
+4. le filtre `relift/config` (pour les équipes techniques).
+
+Pour imposer une valeur depuis le fichier, listez son chemin dans `"locked"` : elle s’affiche alors en **lecture seule** dans l’administration. Les listes (groupes, règles) remplacent entièrement la valeur précédente.
+
+## Import et export [#import-et-export]
+
+Section **Import et export** : exportez la configuration d’un site au format JSON, collez-la sur un autre site puis enregistrez. Les réglages imposés par `client.json` ne sont jamais remplacés. L’option **Réinitialiser** efface les réglages saisis dans l’administration et revient aux valeurs de `client.json`.
+
+<Callout type="warn" title="Avant d’importer">
+Les réglages actuels de l’administration sont remplacés par ceux du fichier collé. Exportez d’abord le site cible pour garder une copie.
+</Callout>
+
+# Rôles de l’équipe (/docs/reglages/roles)
+
+Relift ajoute des rôles qui correspondent aux métiers d’un catalogue B2B. Le client n’a jamais le rôle Administrateur Relift.
+
+| Rôle | Accès |
+|---|---|
+| Administrateur Relift | Tout |
+| Responsable catalogue | Catalogue, médias, commandes, pages, actualités, comptes clients, imports |
+| Commercial | Commandes, comptes clients, demandes de devis |
+| Rédacteur | Actualités et guides, médias |
+| Synchronisation | Compte technique pour l’outil d’automatisation (mots de passe d’application autorisés) |
+
+## Garde-fous [#garde-fous]
+
+Un utilisateur qui n’est pas administrateur ne peut modifier, promouvoir ou supprimer que des comptes clients, et ne peut pas changer son propre rôle. Les changements de rôle sont inscrits au [journal d’activité](/docs/securite/journal-activite).
+
+## Droits complémentaires [#droits-complémentaires]
+
+| Droit | Usage |
+|---|---|
+| `relift_content` | À accorder dans Bricks → Réglages → Accès au builder |
+| `relift_import` | Imports |
+| `relift_api` | Accès technique |
+| `relift_manage` | Gestion Relift |
+
+## Menus selon le rôle [#menus-selon-le-rôle]
+
+Les rôles de l’équipe voient des menus au vocabulaire du catalogue ; ce qui n’est pas utile à leur métier est masqué, jamais supprimé. Voir [prendre en main l’administration](/docs/demarrage/prise-en-main).
+
+# Connexion sécurisée (/docs/securite/connexion)
+
+Réglages : **WooCommerce → Réglages → Relift B2B → Sécurité**.
+
+## Double authentification [#double-authentification]
+
+Code à 6 chiffres d’une application d’authentification (Google Authenticator, Microsoft Authenticator, 1Password, Bitwarden…), avec **codes de secours**.
+
+- Chaque personne l’active dans **Profil → Double authentification** ; les clients dans **Mon compte → Sécurité**.
+- Pour les rôles de l’équipe (`security.two_factor.required_roles`), elle devient **obligatoire** après un délai (`grace_days`, 7 jours par défaut) : un bandeau rappelle la date limite, puis l’accès à l’administration est bloqué jusqu’à l’activation.
+- Téléphone perdu : `wp relift 2fa reset`.
+
+## Clés d’accès (WebAuthn) [#clés-daccès-webauthn]
+
+Une clé d’accès (empreinte, visage ou clé de sécurité) avec vérification de l’appareil, remplace le mot de passe et le code de la double authentification. Activées par défaut (`security.passkeys.enabled`), jusqu’à 10 par personne. Elles se gèrent dans **Profil → Clés d’accès**, ou **Mon compte → Sécurité** pour les clients, et demandent une connexion en https.
+
+## Alertes de nouvel appareil [#alertes-de-nouvel-appareil]
+
+Un e-mail est envoyé à la personne lors d’une connexion depuis un appareil inconnu. Réglage : comptes de l’équipe (défaut), tous les comptes, ou désactivée.
+
+## Limitation des tentatives [#limitation-des-tentatives]
+
+Toujours active : après 5 échecs pour un même identifiant depuis une même adresse, la connexion est bloquée 15 minutes ; après 20 échecs depuis une même adresse, elle est bloquée 30 minutes.
+
+## Écran de connexion [#écran-de-connexion]
+
+La page de connexion est en écran partagé et personnalisable. Voir [le fichier client.json](/docs/reglages/client-json).
+
+# Journal d’activité (/docs/securite/journal-activite)
+
+Le journal garde la trace des événements qui comptent pour la sécurité et la gestion des comptes.
+
+## Ce qui est enregistré [#ce-qui-est-enregistré]
+
+Connexions et échecs, blocages après trop de tentatives, connexions avec double authentification ou clé d’accès, changements de rôle, validations et refus de comptes pros, modifications de réglages, imports de prix, exports et demandes de devis. Les échecs d’envoi du webhook y figurent aussi.
+
+## Consulter [#consulter]
+
+Menu **Relift → Journal d’activité** (administrateurs), ou en ligne de commande :
+
+```bash
+wp relift log list --event=login_failed --limit=50
+```
+
+## Conservation [#conservation]
+
+12 mois par défaut (`security.log_retention_months`), puis purge automatique quotidienne. Le journal est inclus dans l’export et l’effacement RGPD de WordPress.
+
+## En-têtes de sécurité [#en-têtes-de-sécurité]
+
+Relift pose des en-têtes de sécurité par défaut (`security.headers`). Mettez-le à `false` si votre serveur Nginx les envoie déjà.
+
+# Données personnelles (RGPD) (/docs/securite/rgpd)
+
+Toute donnée personnelle collectée par Relift a un **export**, un **effacement** et une **durée de conservation**, accessibles par les outils de WordPress (**Outils → Exporter / Effacer les données personnelles**).
+
+| Donnée | Conservation |
+|---|---|
+| Demandes de devis | 36 mois par défaut, puis anonymisation (`b2b.quote_retention_months`) |
+| Comptes pros (société, SIRET, TVA, consentement) | Tant que le compte existe ; effaçable sur demande |
+| Journal d’activité | 12 mois par défaut (`security.log_retention_months`) |
+
+## Consentement [#consentement]
+
+Les formulaires de demande de devis et d’inscription recueillent le consentement ; sa date est conservée et transmise dans le webhook.
+
+## Prix réservés [#prix-réservés]
+
+Un prix réservé ne fuite ni dans la page, ni dans les données structurées, ni dans l’API de la boutique, ni dans le cache de page, ni dans le webhook.
+
+# Règles de commande (/docs/tarifs-commandes/regles-de-commande)
+
+Toutes ces règles se règlent dans **WooCommerce → Réglages → Relift B2B**.
+
+## Quantités [#quantités]
+
+Sur la fiche, onglet **Inventaire** : **Quantité minimum** et **Vendu par (multiple)**. Le réglage **Règles de quantité pour** limite ces règles aux comptes pros ou les applique à tous.
+
+## Minimum de commande [#minimum-de-commande]
+
+Montant minimum en € HT, par groupe (**Tarifs**, colonne « Minimum de commande »).
+
+## Panier : franco et remise par seuil [#panier--franco-et-remise-par-seuil]
+
+Section **Panier et livraison**, tableau **Règles** :
+
+| Règle | Effet |
+|---|---|
+| Livraison offerte | À partir d’un sous-total HT |
+| Remise sur le panier | Pourcentage à partir d’un sous-total HT, avec un libellé affiché au client |
+
+Chaque règle peut cibler une audience (tous, comptes pros, un groupe).
+
+## Livraison et paiement réservés [#livraison-et-paiement-réservés]
+
+Tableaux **Modes réservés** (livraison) et **Moyens réservés** (paiement) : choisissez le mode ou le moyen et l’audience : comptes pros validés, visiteurs et particuliers, ou un groupe précis.
+
+## Paiement à échéance [#paiement-à-échéance]
+
+Une passerelle **Virement à 30 jours** est proposée aux comptes pros validés. Activez-la dans **WooCommerce → Réglages → Paiements** : nom affiché, description et délai (0 à 60 jours) se règlent là.
+
+<Callout title="Délais de paiement">
+Entre professionnels, le délai légal de règlement est plafonné : vérifiez le délai que vous saisissez.
+</Callout>
+
+# Tarifs par groupe (/docs/tarifs-commandes/tarifs-par-groupe)
+
+Le prix d’un produit pour un compte pro suit des règles appliquées dans cet ordre :
+
+1. le **prix fixe** du produit pour le groupe ;
+2. la remise du groupe pour la **catégorie** du produit ;
+3. la remise **générale** du groupe ;
+4. les **paliers** dégressifs selon la quantité.
+
+## Où régler [#où-régler]
+
+| Besoin | Où |
+|---|---|
+| Remise générale, minimum de commande, paliers du groupe | **Relift B2B → Tarifs**, tableau Groupes |
+| Remise d’un groupe sur une catégorie | **Relift B2B → Tarifs**, tableau Remises |
+| Prix fixe d’un produit pour un groupe | Fiche produit, onglet Général, **Prix par groupe** |
+| Paliers propres à un produit | Fiche produit, **Prix dégressifs (pros)** |
+| Affichage hors taxes et mention après le prix | **Relift B2B → Tarifs** |
+
+## Paliers [#paliers]
+
+Format : `quantité = remise %`, séparés par des points-virgules, par exemple `10 = 3 % ; 50 = 5 %`. Sur la fiche, une ligne peut aussi donner un prix unitaire HT. Les paliers de la fiche l’emportent sur ceux du groupe ; les paliers s’appliquent aussi aux déclinaisons. Réglage **Prix dégressifs pour** : les comptes pros validés ou tous les acheteurs qui voient les prix.
+
+## Importer des prix fixes [#importer-des-prix-fixes]
+
+Un fichier CSV (séparateur `;` ou `,`) avec trois colonnes : **référence (UGS)**, **identifiant du groupe**, **prix**. Un prix vide supprime le prix fixe. L’en-tête est ignoré.
+
+```csv
+sku;groupe;prix
+FEN-PVC-1200;installateur;412,50
+FEN-PVC-1200;distributeur;380
+```
+
+```bash
+wp relift prices import prix.csv --dry-run   # vérifie sans rien enregistrer
+wp relift prices import prix.csv
+wp relift prices show FEN-PVC-1200           # prix public et prix par groupe
+```
+
+Les lignes en erreur (groupe inconnu, référence introuvable, prix invalide) sont signalées avec leur numéro. L’import est inscrit au [journal d’activité](/docs/securite/journal-activite).
+
+# Visibilité des prix et du catalogue (/docs/tarifs-commandes/visibilite)
+
+## Qui voit les prix [#qui-voit-les-prix]
+
+**WooCommerce → Réglages → Relift B2B → Catalogue** (ou `b2b.prices`) :
+
+| Valeur | Effet |
+|---|---|
+| Les comptes pros validés (`pros`) | Seuls les comptes pros validés et l’équipe voient les prix |
+| Toute personne connectée (`logged_in`) | Tout compte connecté voit les prix |
+| Tout le monde (`public`) | Prix visibles de tous |
+
+Un prix réservé n’apparaît **nulle part** pour un visiteur non autorisé : ni dans la page, ni dans les données structurées (JSON-LD), ni dans l’API de la boutique (Store API), ni dans le cache de page. Chaque règle est couverte par un test automatique. À la place du prix, la page affiche « Prix pro HT après connexion ».
+
+Les prix des pros s’affichent **hors taxes**, avec la mention HT (réglable).
+
+## Visibilité des produits et des catégories [#visibilité-des-produits-et-des-catégories]
+
+Sur la fiche produit (onglet **Général**) et dans l’écran d’une catégorie, le champ **Visible par** propose : tout le monde, comptes pros validés, ou certains groupes.
+
+- Les règles d’une catégorie s’appliquent à ses sous-catégories et à ses produits.
+- Un produit réservé est absent des listes, des catégories, de la recherche, des filtres et de leurs compteurs pour un visiteur non autorisé.
+
+## Prix sur devis [#prix-sur-devis]
+
+Cochez **Prix sur devis** (onglet Général) : aucun prix n’est affiché, même aux pros, le produit n’est pas commandable et le bouton de demande de devis reste proposé. Voir [les demandes de devis](/docs/devis/demandes-de-devis).

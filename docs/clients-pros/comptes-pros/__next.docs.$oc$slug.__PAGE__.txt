@@ -1,0 +1,54 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/22uvluxcz_t1m.js"
+5:"/_next/static/chunks/3vxcaxl9rybwn.js"
+6:"/_next/static/chunks/039b2uykstso8.js"
+7:"/_next/static/chunks/19b479a35pu1k.js"
+8:I[39756,["$4","$5","$6","$7"],"default"]
+9:I[37457,["$4","$5","$6","$7"],"default"]
+e:"/_next/static/chunks/3tbf6z5wvgdy1.js"
+f:"/_next/static/chunks/0tz6p6l5mlps2.js"
+10:"/_next/static/chunks/1_asspl8xs7c0.js"
+11:"/_next/static/chunks/17t58aah9n9ks.js"
+12:"/_next/static/chunks/3l__e9cre1ujh.js"
+13:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsPage"]
+14:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsTitle"]
+15:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsDescription"]
+16:"MarkdownCopyButton"
+17:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"$16"]
+18:"ViewOptionsPopover"
+19:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"$18"]
+1a:I[98330,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"DocsBody"]
+1b:I[94157,["$4","$5","$6","$7","$e","$f","$10","$11","$12"],"Heading"]
+29:"ViewportBoundary"
+2a:I[97367,["$4","$5","$6","$7"],"$29"]
+2b:"MetadataBoundary"
+2c:I[97367,["$4","$5","$6","$7"],"$2b"]
+2d:"$Sreact.suspense"
+b:X
+b:C
+c:X
+d:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$3","c",{"children":[["$","$L13",null,{"toc":[{"depth":2,"url":"#inscription","title":"Inscription"},{"depth":2,"url":"#les-trois-états","title":"Les trois états"},{"depth":2,"url":"#valider-ou-refuser","title":"Valider ou refuser"},{"depth":3,"url":"#repérer-les-demandes","title":"Repérer les demandes"},{"depth":3,"url":"#décider","title":"Décider"},{"depth":3,"url":"#informer","title":"Informer"},{"depth":2,"url":"#sur-les-commandes","title":"Sur les commandes"},{"depth":2,"url":"#b2bking","title":"B2BKing"}],"children":[["$","$L14",null,{"children":"Comptes pros"}],["$","$L15",null,{"className":"mb-0","children":"L’inscription professionnelle, la validation par l’équipe et les trois états d’un compte."}],["$","div",null,{"className":"flex flex-row gap-2 items-center border-b pb-6","children":[["$","$L17",null,{"markdownUrl":"/llms.mdx/docs/clients-pros/comptes-pros.md"}],["$","$L19",null,{"markdownUrl":"/llms.mdx/docs/clients-pros/comptes-pros.md","githubUrl":"https://github.com/designbots/relift-docs/blob/main/content/docs/clients-pros/comptes-pros.mdx"}]]}],["$","$L1a",null,{"children":[["$","p",null,{"children":["Un ",["$","strong",null,{"children":"compte pro"}]," ouvre l’accès aux prix et aux conditions réservés aux professionnels, sans extension tierce."]}],"\n",["$","$L1b",null,{"as":"h2","id":"inscription","children":"Inscription"}],"\n",["$","p",null,{"children":["Le formulaire d’inscription pro se trouve sur ",["$","code",null,{"children":"wp-login.php?action=relift_pro"}],". Il est relié depuis l’écran de connexion ; vous pouvez aussi le proposer ailleurs :"]}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":["le shortcode ",["$","code",null,{"children":"[relift_compte_pro label=\"Créer un compte pro\"]"}],", masqué aux personnes déjà connectées ;"]}],"\n",["$","li",null,{"children":["la fonction ",["$","code",null,{"children":"relift_pro_signup_url()"}]," pour les modèles."]}],"\n"]}],"\n",["$","p",null,{"children":["Le formulaire recueille la société, le ",["$","strong",null,{"children":"SIRET"}]," (14 chiffres, contrôlé), le numéro de TVA intracommunautaire (facultatif, déduit du SIRET si vide et contrôlé auprès du service européen ",["$","strong",null,{"children":"VIES"}],"), le groupe d’activité, le nom, l’e-mail, le téléphone, le code postal, la ville et un mot de passe. Les messages d’erreur apparaissent à côté du champ concerné."]}],"\n",["$","p",null,{"children":["Réglage : ",["$","strong",null,{"children":"WooCommerce → Réglages → Relift B2B → Comptes pros"}]," (ou ",["$","code",null,{"children":"b2b.signup"}]," dans ",["$","code",null,{"children":"client.json"}],")."]}],"\n",["$","$L1b",null,{"as":"h2","id":"les-trois-états","children":"Les trois états"}],"\n",["$","div",null,{"className":"relative overflow-auto prose-no-margin my-6","tabIndex":0,"children":["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"État"}],["$","th",null,{"children":"Effet"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"En attente"}],["$","td",null,{"children":"Le compte est traité comme un visiteur : pas de prix réservés"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Validé"}],["$","td",null,{"children":"Accès aux prix, remises et conditions de son groupe"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Refusé"}],["$","td",null,{"children":"Pas d’accès aux conditions pros"}]]}]]}]]}]}],"\n",["$","$L1b",null,{"as":"h2","id":"valider-ou-refuser","children":"Valider ou refuser"}],"\n",["$","p",null,{"children":["Deux modes, au réglage ",["$","strong",null,{"children":"Validation des comptes"}]," (",["$","code",null,{"children":"b2b.signup_approval"}],") :"]}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Manuelle"}]," (par défaut) : l’équipe est prévenue par e-mail et valide chaque demande."]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Automatique"}]," (",["$","code",null,{"children":"vies"}],") : le compte est activé quand le numéro de TVA est validé par le VIES."]}],"\n"]}],"\n",["$","div",null,{"className":"fd-steps","children":[["$","div",null,{"className":"fd-step","children":["$L1c","$L1d"]}],"$L1e","$L1f"]}],"\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24"]}]]}],["$L25","$L26"],"$L27"]}],"p":"$@28","v":null,"s":"$c"}}]]
+2:[["children",{"s":{"n":"slug","t":"oc","k":"clients-pros/comptes-pros","s":[]},"h":64,"d":{"r":["$","$3","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}]}]]}],"p":"$@a","v":"$b","s":"$c"},"c":"$Qd"}]]
+1:[["children",{"s":"docs","h":32,"c":"$Q2"}]]
+0:{"t":{"t":{"s":"","h":80,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2c",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Comptes pros · Documentation Relift"}],["$","meta","1",{"name":"description","content":"L’inscription professionnelle, la validation par l’équipe et les trois états d’un compte."}],["$","meta","2",{"property":"og:title","content":"Comptes pros · Documentation Relift"}],["$","meta","3",{"property":"og:description","content":"L’inscription professionnelle, la validation par l’équipe et les trois états d’un compte."}],["$","meta","4",{"name":"twitter:card","content":"summary"}],["$","meta","5",{"name":"twitter:title","content":"Comptes pros · Documentation Relift"}],["$","meta","6",{"name":"twitter:description","content":"L’inscription professionnelle, la validation par l’équipe et les trois états d’un compte."}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2e","v":null,"s":"$c"}},"a":"$@2f","u":"$@30","b":"h7MCWUW-k4AMwATexX3dG"}
+31:I[97367,["$4","$5","$6","$7"],"OutletBoundary"]
+1c:["$","$L1b",null,{"as":"h3","id":"repérer-les-demandes","children":"Repérer les demandes"}]
+1d:["$","p",null,{"children":["Le tableau de bord signale les comptes à valider ; la liste ",["$","strong",null,{"children":"Clients pros"}]," propose la vue « Comptes pros à valider »."]}]
+1e:["$","div",null,{"className":"fd-step","children":[["$","$L1b",null,{"as":"h3","id":"décider","children":"Décider"}],["$","p",null,{"children":["Sur la ligne du compte : ",["$","strong",null,{"children":"Valider le compte pro"}]," ou ",["$","strong",null,{"children":"Refuser"}],". En lot, cochez plusieurs comptes et choisissez « Valider les comptes pros » ou « Refuser les comptes pros »."]}]]}]
+1f:["$","div",null,{"className":"fd-step","children":[["$","$L1b",null,{"as":"h3","id":"informer","children":"Informer"}],["$","p",null,{"children":"Le demandeur reçoit un e-mail d’accusé de réception à l’inscription, puis un e-mail à la décision."}]]}]
+20:["$","p",null,{"children":["L’e-mail d’alerte de l’équipe part à l’adresse ",["$","strong",null,{"children":"Alertes d’inscription à"}]," (",["$","code",null,{"children":"b2b.signup_email"}],") ; à défaut, à l’adresse des demandes de devis, puis à l’e-mail d’administration."]}]
+21:["$","$L1b",null,{"as":"h2","id":"sur-les-commandes","children":"Sur les commandes"}]
+22:["$","p",null,{"children":"La société, le SIRET, le numéro de TVA et le groupe du compte pro sont copiés sur chaque commande : ils apparaissent dans l’administration, les e-mails, Mon compte et sont disponibles pour vos connecteurs de facturation."}]
+23:["$","$L1b",null,{"as":"h2","id":"b2bking","children":"B2BKing"}]
+24:["$","p",null,{"children":["Si votre site utilise déjà B2BKing, ",["$","code",null,{"children":"b2b.plugin"}]," vaut ",["$","code",null,{"children":"b2bking"}]," : Relift lit alors ses données de compte et reste inactif sur l’inscription et les tarifs."]}]
+25:["$","script","script-0",{"src":"/_next/static/chunks/17t58aah9n9ks.js","async":true}]
+26:["$","script","script-1",{"src":"/_next/static/chunks/3l__e9cre1ujh.js","async":true}]
+27:["$","$L31",null,{"children":["$","$2d",null,{"name":"Next.MetadataOutlet","children":"$@32"}]}]
+30:true
+c:300
+32:null
+c:C
+2f:0
+a:"$undefined"
+2e:"$undefined"
+28:"$undefined"
