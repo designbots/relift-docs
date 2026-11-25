@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Balises dynamiques et boucles Bricks · Documentation Relift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="docs.css"></head>
+<body class="font-sans">
+<div class="mx-auto flex min-h-screen w-full max-w-6xl min-w-0 flex-col gap-6 px-4 py-6 md:flex-row md:gap-10">
+<aside class="md:sticky md:top-6 md:h-fit md:w-60 md:shrink-0">
+<a href="index.html" class="block px-3 text-lg font-medium text-accent no-underline">Relift · Docs</a>
+<p class="px-3 text-xs text-muted">Version 1.19.0</p>
+<nav class="mt-2"><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Démarrer</p><a href="index.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Accueil</a><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Utiliser Relift</p><a href="comptes-pros.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Comptes professionnels</a><a href="prix-et-visibilite.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Prix et visibilité</a><a href="devis.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Demandes de devis</a><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Intégrations</p><a href="webhook.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Webhook signé</a><a href="balises-bricks.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline bg-pill font-medium text-ink">Balises dynamiques et boucles Bricks</a><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Référence</p><a href="configuration.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Configuration (client.json)</a></nav></aside>
+<main class="w-full min-w-0 flex-1 overflow-x-hidden"><article class="prose-rl"><h1>Balises dynamiques et boucles Bricks</h1>
+<p>Relift s’intègre à Bricks Builder <strong>sans shortcode</strong> : tout se règle dans l’éditeur, par des éléments Bricks et des données dynamiques.</p>
+<h2>Balises du groupe « Relift »</h2>
+<p>Disponibles dans le sélecteur de données dynamiques de l’éditeur, dans les modèles, les composants et les boucles de requête :</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Balise</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>{rl_prix_carte}</code></td>
+<td>« dès 1 234 € HT » si le visiteur voit les prix, sinon « Prix pro HT après connexion »</td>
+</tr>
+<tr>
+<td><code>{rl_prix_ht}</code></td>
+<td>le montant HT seul, vide si le prix est réservé</td>
+</tr>
+<tr>
+<td><code>{rl_prix_visible}</code></td>
+<td><code>1</code> si le prix est visible, vide sinon : à utiliser dans les conditions d’élément</td>
+</tr>
+</tbody></table></div>
+<p>La décision d’afficher un prix reste toujours prise par le plugin : le thème affiche, il ne décide pas.</p>
+<h2>Balises de Bricks utiles au catalogue</h2>
+<ul>
+<li><code>{post_terms_&lt;taxonomie&gt;}</code> pour toute taxonomie (gammes <code>rl_gamme</code>, catégories, attributs <code>pa_*</code>), avec le filtre <code>:plain</code> pour du texte sans lien ;</li>
+<li><code>{acf_&lt;champ&gt;}</code> pour tout champ ACF (caractéristiques, documents, références) ;</li>
+<li><code>{post_title}</code>, <code>{post_url}</code>, <code>{featured_image}</code>, <code>{post_excerpt}</code>.</li>
+</ul>
+<h2>Boucles de requête</h2>
+<p>Dans Bricks, la <strong>carte</strong> porte la boucle de requête (Bricks répète l’élément porteur). Les types de contenu publics (produits, articles, réalisations, témoignages, ressources, pages locales) sont disponibles. Les produits réservés sont exclus des boucles pour les visiteurs non autorisés, ainsi que des compteurs et filtres.</p>
+</article>
+<footer class="mt-12 border-t border-line pt-4 text-xs text-muted">Version 1.19.0 · générée le 25 novembre 2026 · Relift est un service édité par Design Bots and Co, SASU</footer></main>
+</div></body></html>

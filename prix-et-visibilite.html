@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prix et visibilité · Documentation Relift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="docs.css"></head>
+<body class="font-sans">
+<div class="mx-auto flex min-h-screen w-full max-w-6xl min-w-0 flex-col gap-6 px-4 py-6 md:flex-row md:gap-10">
+<aside class="md:sticky md:top-6 md:h-fit md:w-60 md:shrink-0">
+<a href="index.html" class="block px-3 text-lg font-medium text-accent no-underline">Relift · Docs</a>
+<p class="px-3 text-xs text-muted">Version 1.19.0</p>
+<nav class="mt-2"><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Démarrer</p><a href="index.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Accueil</a><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Utiliser Relift</p><a href="comptes-pros.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Comptes professionnels</a><a href="prix-et-visibilite.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline bg-pill font-medium text-ink">Prix et visibilité</a><a href="devis.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Demandes de devis</a><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Intégrations</p><a href="webhook.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Webhook signé</a><a href="balises-bricks.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Balises dynamiques et boucles Bricks</a><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Référence</p><a href="configuration.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Configuration (client.json)</a></nav></aside>
+<main class="w-full min-w-0 flex-1 overflow-x-hidden"><article class="prose-rl"><h1>Prix et visibilité</h1>
+<h2>Qui voit les prix</h2>
+<p>Le réglage <code>b2b.prices</code> choisit l’audience :</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Valeur</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public</code></td>
+<td>prix visibles de tous</td>
+</tr>
+<tr>
+<td><code>logged_in</code></td>
+<td>prix visibles des clients connectés</td>
+</tr>
+<tr>
+<td><code>pros</code></td>
+<td>prix visibles des seuls comptes pros validés (réglage de référence)</td>
+</tr>
+</tbody></table></div>
+<p>Un prix réservé n’apparaît <strong>nulle part</strong> pour un visiteur non autorisé : ni dans la page, ni dans les données structurées (JSON-LD), ni dans l’API de la boutique (Store API), ni dans le cache de page. Chaque règle est vérifiée par un test automatique.</p>
+<p>À la place du prix, la page affiche « Prix pro HT après connexion ». Les prix des pros sont affichés <strong>hors taxes</strong>.</p>
+<h2>Visibilité du catalogue</h2>
+<p>Un produit ou une catégorie peut être réservé à une audience (public, pros, ou groupes précis). Un produit réservé est absent des listes, des catégories, de la recherche et des filtres du visiteur non autorisé.</p>
+<h2>Remises et conditions par groupe</h2>
+<p>Dans <code>b2b.pricing.groups</code>, chaque groupe peut avoir : une remise générale, des remises par catégorie, des paliers dégressifs par quantité, un minimum de commande. Des prix fixes par groupe se saisissent sur la fiche produit ou s’importent par fichier CSV.</p>
+<p>Au panier : franco de port et remise par seuil (<code>b2b.cart_rules</code>), quantités minimales, multiples et conditionnements, paiement et livraison selon l’acheteur (<code>payment_rules</code>, <code>shipping_rules</code>), paiement à échéance.</p>
+<h2>Prix sur devis</h2>
+<p>Un produit peut être marqué « sur devis » : il n’a alors pas de prix en ligne et se demande par le panier de devis. Voir <a href="devis.html">Demandes de devis</a>.</p>
+</article>
+<footer class="mt-12 border-t border-line pt-4 text-xs text-muted">Version 1.19.0 · générée le 25 novembre 2026 · Relift est un service édité par Design Bots and Co, SASU</footer></main>
+</div></body></html>

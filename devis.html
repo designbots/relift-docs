@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demandes de devis · Documentation Relift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="docs.css"></head>
+<body class="font-sans">
+<div class="mx-auto flex min-h-screen w-full max-w-6xl min-w-0 flex-col gap-6 px-4 py-6 md:flex-row md:gap-10">
+<aside class="md:sticky md:top-6 md:h-fit md:w-60 md:shrink-0">
+<a href="index.html" class="block px-3 text-lg font-medium text-accent no-underline">Relift · Docs</a>
+<p class="px-3 text-xs text-muted">Version 1.19.0</p>
+<nav class="mt-2"><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Démarrer</p><a href="index.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Accueil</a><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Utiliser Relift</p><a href="comptes-pros.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Comptes professionnels</a><a href="prix-et-visibilite.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Prix et visibilité</a><a href="devis.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline bg-pill font-medium text-ink">Demandes de devis</a><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Intégrations</p><a href="webhook.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Webhook signé</a><a href="balises-bricks.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Balises dynamiques et boucles Bricks</a><p class="mt-6 mb-2 px-3 text-xs uppercase tracking-wide text-muted">Référence</p><a href="configuration.html" class="block rounded-lg px-3 py-1.5 text-sm no-underline text-muted hover:bg-pill">Configuration (client.json)</a></nav></aside>
+<main class="w-full min-w-0 flex-1 overflow-x-hidden"><article class="prose-rl"><h1>Demandes de devis</h1>
+<h2>Panier de devis</h2>
+<p>Le visiteur ajoute des produits à un <strong>panier de devis</strong> et envoie sa demande depuis la page définie par <code>b2b.quote_page</code> (par défaut <code>/demande-de-devis/</code>, qui contient <code>[relift_devis_panier]</code>). Le formulaire est protégé contre les robots, recueille le consentement et n’affiche jamais de prix réservé.</p>
+<h2>Suivi dans l’administration</h2>
+<p>Chaque demande devient une fiche visible dans l’administration, avec la société, les produits, la date de réception et un <strong>statut</strong> que l’équipe fait évoluer. L’e-mail de notification est envoyé à <code>b2b.quote_email</code>, ou à l’adresse d’administration si le réglage est vide.</p>
+<h2>Données personnelles</h2>
+<p>Les demandes de devis sont incluses dans l’export et l’effacement RGPD de WordPress. Elles sont conservées <code>b2b.quote_retention_months</code> mois (36 par défaut), puis purgées.</p>
+<h2>Pour brancher un CRM</h2>
+<p>Chaque nouvelle demande peut être envoyée à un outil d’automatisation : voir <a href="webhook.html">Webhook signé</a>.</p>
+</article>
+<footer class="mt-12 border-t border-line pt-4 text-xs text-muted">Version 1.19.0 · générée le 25 novembre 2026 · Relift est un service édité par Design Bots and Co, SASU</footer></main>
+</div></body></html>
